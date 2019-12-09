@@ -38,14 +38,15 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarItem4 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem5 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem6 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.btnSystemSetup = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem3 = new DevExpress.XtraNavBar.NavBarItem();
+            this.btnNewStudentListMgr = new DevExpress.XtraNavBar.NavBarItem();
+            this.btnNewStudentEnrollMgr = new DevExpress.XtraNavBar.NavBarItem();
+            this.btnNewStudentAssignClassMgr = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.btnOldStudentListMgr = new DevExpress.XtraNavBar.NavBarItem();
+            this.btnOldStudentRegistrationMgr = new DevExpress.XtraNavBar.NavBarItem();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
@@ -112,9 +113,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 502);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 505);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(933, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(933, 20);
             // 
             // barDockControlLeft
             // 
@@ -122,7 +123,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 502);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 505);
             // 
             // barDockControlRight
             // 
@@ -130,78 +131,92 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(933, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 502);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 505);
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.navBarGroup2;
+            this.navBarControl1.ActiveGroup = this.navBarGroup1;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.navBarGroup1,
-            this.navBarGroup2});
+            this.navBarGroup2,
+            this.navBarGroup3});
             this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
-            this.navBarItem1,
-            this.navBarItem2,
-            this.navBarItem3,
-            this.navBarItem4,
-            this.navBarItem5,
-            this.navBarItem6});
+            this.btnNewStudentListMgr,
+            this.btnNewStudentEnrollMgr,
+            this.btnNewStudentAssignClassMgr,
+            this.btnOldStudentListMgr,
+            this.btnOldStudentRegistrationMgr,
+            this.btnSystemSetup});
             this.navBarControl1.Location = new System.Drawing.Point(0, 72);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 163;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
-            this.navBarControl1.Size = new System.Drawing.Size(163, 430);
+            this.navBarControl1.Size = new System.Drawing.Size(163, 433);
             this.navBarControl1.TabIndex = 5;
             this.navBarControl1.Text = "navBarControl1";
             // 
-            // navBarGroup2
+            // navBarGroup3
             // 
-            this.navBarGroup2.Caption = "新生入学管理";
-            this.navBarGroup2.Expanded = true;
-            this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem4),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem5),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem6)});
-            this.navBarGroup2.Name = "navBarGroup2";
+            this.navBarGroup3.Caption = "系统";
+            this.navBarGroup3.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnSystemSetup)});
+            this.navBarGroup3.Name = "navBarGroup3";
             // 
-            // navBarItem4
+            // btnSystemSetup
             // 
-            this.navBarItem4.Caption = "新生名单管理";
-            this.navBarItem4.Name = "navBarItem4";
-            // 
-            // navBarItem5
-            // 
-            this.navBarItem5.Caption = "新生报到管理";
-            this.navBarItem5.Name = "navBarItem5";
-            // 
-            // navBarItem6
-            // 
-            this.navBarItem6.Caption = "新生分班管理";
-            this.navBarItem6.Name = "navBarItem6";
+            this.btnSystemSetup.Caption = "设置";
+            this.btnSystemSetup.ImageOptions.SvgImage = global::MHSSystem.Properties.Resources.properties;
+            this.btnSystemSetup.Name = "btnSystemSetup";
             // 
             // navBarGroup1
             // 
-            this.navBarGroup1.Caption = "基础数据管理";
+            this.navBarGroup1.Caption = "新生信息管理";
+            this.navBarGroup1.Expanded = true;
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem3)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnNewStudentListMgr),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnNewStudentEnrollMgr),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnNewStudentAssignClassMgr)});
             this.navBarGroup1.Name = "navBarGroup1";
             // 
-            // navBarItem1
+            // btnNewStudentListMgr
             // 
-            this.navBarItem1.Caption = "学生信息管理";
-            this.navBarItem1.Name = "navBarItem1";
+            this.btnNewStudentListMgr.Caption = "新生名单管理";
+            this.btnNewStudentListMgr.ImageOptions.SvgImage = global::MHSSystem.Properties.Resources.allowuserstoeditranges;
+            this.btnNewStudentListMgr.Name = "btnNewStudentListMgr";
+            this.btnNewStudentListMgr.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnNewStudentListMgr_LinkClicked);
             // 
-            // navBarItem2
+            // btnNewStudentEnrollMgr
             // 
-            this.navBarItem2.Caption = "教师信息管理";
-            this.navBarItem2.Name = "navBarItem2";
+            this.btnNewStudentEnrollMgr.Caption = "新生报到管理";
+            this.btnNewStudentEnrollMgr.ImageOptions.SvgImage = global::MHSSystem.Properties.Resources.itemtypechecked;
+            this.btnNewStudentEnrollMgr.Name = "btnNewStudentEnrollMgr";
             // 
-            // navBarItem3
+            // btnNewStudentAssignClassMgr
             // 
-            this.navBarItem3.Caption = "班级信息管理";
-            this.navBarItem3.Name = "navBarItem3";
+            this.btnNewStudentAssignClassMgr.Caption = "新生分班管理";
+            this.btnNewStudentAssignClassMgr.ImageOptions.SvgImage = global::MHSSystem.Properties.Resources.editrules;
+            this.btnNewStudentAssignClassMgr.Name = "btnNewStudentAssignClassMgr";
+            // 
+            // navBarGroup2
+            // 
+            this.navBarGroup2.Caption = "老生信息管理";
+            this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnOldStudentListMgr),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnOldStudentRegistrationMgr)});
+            this.navBarGroup2.Name = "navBarGroup2";
+            // 
+            // btnOldStudentListMgr
+            // 
+            this.btnOldStudentListMgr.Caption = "老生名单管理";
+            this.btnOldStudentListMgr.ImageOptions.SvgImage = global::MHSSystem.Properties.Resources.allowuserstoeditranges1;
+            this.btnOldStudentListMgr.Name = "btnOldStudentListMgr";
+            // 
+            // btnOldStudentRegistrationMgr
+            // 
+            this.btnOldStudentRegistrationMgr.Caption = "老生报到管理";
+            this.btnOldStudentRegistrationMgr.ImageOptions.SvgImage = global::MHSSystem.Properties.Resources.itemtypechecked1;
+            this.btnOldStudentRegistrationMgr.Name = "btnOldStudentRegistrationMgr";
             // 
             // xtraTabControl1
             // 
@@ -210,7 +225,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(163, 72);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(770, 430);
+            this.xtraTabControl1.Size = new System.Drawing.Size(770, 433);
             this.xtraTabControl1.TabIndex = 6;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -220,13 +235,13 @@
             // 
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
-            this.xtraTabPage1.Size = new System.Drawing.Size(764, 401);
+            this.xtraTabPage1.Size = new System.Drawing.Size(768, 407);
             this.xtraTabPage1.Text = "xtraTabPage1";
             // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(764, 401);
+            this.xtraTabPage2.Size = new System.Drawing.Size(768, 407);
             this.xtraTabPage2.Text = "xtraTabPage2";
             // 
             // MainForm
@@ -271,12 +286,13 @@
         private DevExpress.XtraNavBar.NavBarControl navBarControl1;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup1;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem4;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem5;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem6;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem1;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem2;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem3;
+        private DevExpress.XtraNavBar.NavBarItem btnOldStudentListMgr;
+        private DevExpress.XtraNavBar.NavBarItem btnOldStudentRegistrationMgr;
+        private DevExpress.XtraNavBar.NavBarItem btnNewStudentListMgr;
+        private DevExpress.XtraNavBar.NavBarItem btnNewStudentEnrollMgr;
+        private DevExpress.XtraNavBar.NavBarItem btnNewStudentAssignClassMgr;
         private DevExpress.XtraEditors.ComboBoxEdit cbStyle;
+        private DevExpress.XtraNavBar.NavBarGroup navBarGroup3;
+        private DevExpress.XtraNavBar.NavBarItem btnSystemSetup;
     }
 }

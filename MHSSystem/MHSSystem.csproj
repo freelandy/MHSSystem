@@ -55,11 +55,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormControls\StudentControl.cs">
+    <Compile Include="FormControls\NewStudentAssignClassControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FormControls\StudentControl.Designer.cs">
-      <DependentUpon>StudentControl.cs</DependentUpon>
+    <Compile Include="FormControls\NewStudentAssignClassControl.Designer.cs">
+      <DependentUpon>NewStudentAssignClassControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\NewStudentEnrollControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\NewStudentEnrollControl.Designer.cs">
+      <DependentUpon>NewStudentEnrollControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\NewStudentListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\NewStudentListControl.Designer.cs">
+      <DependentUpon>NewStudentListControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\BaseForm.cs">
       <SubType>Form</SubType>
@@ -87,8 +99,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormControls\StudentControl.resx">
-      <DependentUpon>StudentControl.cs</DependentUpon>
+    <EmbeddedResource Include="FormControls\NewStudentListControl.resx">
+      <DependentUpon>NewStudentListControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
@@ -111,6 +123,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -125,6 +138,23 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\allowuserstoeditranges.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\itemtypechecked.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editrules.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\allowuserstoeditranges1.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\itemtypechecked1.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\properties.svg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

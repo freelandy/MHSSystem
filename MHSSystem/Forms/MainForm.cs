@@ -34,15 +34,22 @@ namespace MHSSystem.Forms
                     this.cbStyle.Properties.Items.Add(skin.SkinName);
                 }
 
-                FormControls.StudentControl c = new FormControls.StudentControl();
-                c.Dock = DockStyle.Fill;
-                this.xtraTabControl1.TabPages[0].Controls.Add(c);
+                //FormControls.StudentControl c = new FormControls.StudentControl();
+                //c.Dock = DockStyle.Fill;
+                //this.xtraTabControl1.TabPages[0].Controls.Add(c);
             //}
         }
 
         private void CbStyle_SelectedIndexChanged(object sender, EventArgs e)
         {
             BaseForm.defaultLookAndFeel.LookAndFeel.SkinName = this.cbStyle.SelectedItem.ToString();
+        }
+
+        private void btnNewStudentListMgr_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            FormControls.NewStudentListControl c = new FormControls.NewStudentListControl();
+            c.Dock = DockStyle.Fill;
+            this.xtraTabControl1.TabPages[0].Controls.Add(c);
         }
     }
 }
