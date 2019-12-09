@@ -4,4 +4,22 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Dapper\SqlMapperExtensions.Async.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Utils\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Dapper\Contrib\SqlMapperExtensions.Async.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\3rd_party\System.Data.SQLite.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
