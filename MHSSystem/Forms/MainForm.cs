@@ -51,5 +51,12 @@ namespace MHSSystem.Forms
             c.Dock = DockStyle.Fill;
             this.xtraTabControl1.TabPages[0].Controls.Add(c);
         }
+
+        private void BtnNewStudentEnrollMgr_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            FormControls.NewStudentEnrollControl c = new FormControls.NewStudentEnrollControl();
+            c.Dock = DockStyle.Fill;
+            this.xtraTabControl1.TabPages[1].Controls.Add(c);
+        }
     }
 }

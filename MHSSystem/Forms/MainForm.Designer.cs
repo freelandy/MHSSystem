@@ -63,18 +63,20 @@
             this.panel1.Controls.Add(this.cbStyle);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(933, 72);
+            this.panel1.Size = new System.Drawing.Size(1733, 149);
             this.panel1.TabIndex = 0;
             // 
             // cbStyle
             // 
-            this.cbStyle.Location = new System.Drawing.Point(321, 23);
+            this.cbStyle.Location = new System.Drawing.Point(596, 48);
+            this.cbStyle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cbStyle.MenuManager = this.barManager1;
             this.cbStyle.Name = "cbStyle";
             this.cbStyle.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbStyle.Size = new System.Drawing.Size(292, 20);
+            this.cbStyle.Size = new System.Drawing.Size(542, 44);
             this.cbStyle.TabIndex = 0;
             this.cbStyle.SelectedIndexChanged += new System.EventHandler(this.CbStyle_SelectedIndexChanged);
             // 
@@ -107,15 +109,17 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(933, 0);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.barDockControlTop.Size = new System.Drawing.Size(1733, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 505);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 1065);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(933, 20);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1733, 22);
             // 
             // barDockControlLeft
             // 
@@ -123,15 +127,17 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 505);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 1065);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(933, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1733, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 505);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 1065);
             // 
             // navBarControl1
             // 
@@ -148,11 +154,12 @@
             this.btnOldStudentListMgr,
             this.btnOldStudentRegistrationMgr,
             this.btnSystemSetup});
-            this.navBarControl1.Location = new System.Drawing.Point(0, 72);
+            this.navBarControl1.Location = new System.Drawing.Point(0, 149);
+            this.navBarControl1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.navBarControl1.Name = "navBarControl1";
-            this.navBarControl1.OptionsNavPane.ExpandedWidth = 150;
+            this.navBarControl1.OptionsNavPane.ExpandedWidth = 279;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
-            this.navBarControl1.Size = new System.Drawing.Size(150, 433);
+            this.navBarControl1.Size = new System.Drawing.Size(279, 916);
             this.navBarControl1.TabIndex = 5;
             this.navBarControl1.Text = "navBarControl1";
             // 
@@ -181,6 +188,7 @@
             this.btnNewStudentEnrollMgr.ImageOptions.LargeImage = global::MHSSystem.Properties.Resources.showtestreport_32x32;
             this.btnNewStudentEnrollMgr.ImageOptions.SmallImage = global::MHSSystem.Properties.Resources.showtestreport_16x16;
             this.btnNewStudentEnrollMgr.Name = "btnNewStudentEnrollMgr";
+            this.btnNewStudentEnrollMgr.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.BtnNewStudentEnrollMgr_LinkClicked);
             // 
             // btnNewStudentAssignClassMgr
             // 
@@ -231,10 +239,11 @@
             // 
             this.xtraTabControl1.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InActiveTabPageHeader;
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(150, 72);
+            this.xtraTabControl1.Location = new System.Drawing.Point(279, 149);
+            this.xtraTabControl1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(783, 433);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1454, 916);
             this.xtraTabControl1.TabIndex = 6;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -242,22 +251,24 @@
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
-            this.xtraTabPage1.Size = new System.Drawing.Size(781, 407);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1450, 863);
             this.xtraTabPage1.Text = "xtraTabPage1";
             // 
             // xtraTabPage2
             // 
+            this.xtraTabPage2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(768, 407);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1450, 844);
             this.xtraTabPage2.Text = "xtraTabPage2";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 525);
+            this.ClientSize = new System.Drawing.Size(1733, 1087);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.navBarControl1);
             this.Controls.Add(this.panel1);
@@ -265,6 +276,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
