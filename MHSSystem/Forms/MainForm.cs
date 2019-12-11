@@ -26,7 +26,7 @@ namespace MHSSystem.Forms
             //if (loginForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             //{
                 // show splash form
-                DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(Forms.SplashForm));
+                //DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(Forms.SplashForm));
 
                 // do something time-comsuming
                 foreach (DevExpress.Skins.SkinContainer skin in DevExpress.Skins.SkinManager.Default.Skins)

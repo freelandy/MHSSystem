@@ -8,6 +8,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using Emgu;
+using Emgu.CV;
+using Emgu.CV.UI;
+using Emgu.CV.Util;
 
 namespace MHSSystem.FormControls
 {
@@ -16,6 +20,12 @@ namespace MHSSystem.FormControls
         public NewStudentEnrollControl()
         {
             InitializeComponent();
+        }
+
+        private void NewStudentEnrollControl_Load(object sender, EventArgs e)
+        {
+            this.layoutControl1.BestFit();
+            //this.gridView1.BestFitColumns();
         }
     }
 }
