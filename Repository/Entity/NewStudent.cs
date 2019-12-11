@@ -82,7 +82,7 @@ namespace Repository.Entity
         /// <summary>
         /// 体育成绩
         /// </summary>
-        public int tycj { set; get; }
+        public string tycj { set; get; }
 
         /// <summary>
         /// 身份证号
