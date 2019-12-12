@@ -240,6 +240,8 @@
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.FooterPanel.Options.UseTextOptions = true;
+            this.gridView1.Appearance.FooterPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridView1.ColumnPanelRowHeight = 0;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.ID,
@@ -313,14 +315,15 @@
             // 
             this.ID.Caption = "ID";
             this.ID.Name = "ID";
-            this.ID.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "", "{0}")});
             // 
             // zkzh
             // 
             this.zkzh.Caption = "准考证号";
             this.zkzh.FieldName = "zkzh";
             this.zkzh.Name = "zkzh";
+            this.zkzh.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(),
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "zkzh", "共{0:D}条记录")});
             this.zkzh.Visible = true;
             this.zkzh.VisibleIndex = 0;
             // 
@@ -693,6 +696,7 @@
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "NewStudentListControl";
             this.Size = new System.Drawing.Size(907, 603);
+            this.Load += new System.EventHandler(this.NewStudentListControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();

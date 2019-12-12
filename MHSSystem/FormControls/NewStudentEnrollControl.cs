@@ -12,11 +12,14 @@ using Emgu;
 using Emgu.CV;
 using Emgu.CV.UI;
 using Emgu.CV.Util;
+using Repository;
 
 namespace MHSSystem.FormControls
 {
     public partial class NewStudentEnrollControl : DevExpress.XtraEditors.XtraUserControl
     {
+        private readonly Repository.NewStudent repoNewStudent = new NewStudent();
+
         public NewStudentEnrollControl()
         {
             InitializeComponent();
@@ -25,7 +28,38 @@ namespace MHSSystem.FormControls
         private void NewStudentEnrollControl_Load(object sender, EventArgs e)
         {
             this.layoutControl1.BestFit();
-            //this.gridView1.BestFitColumns();
+
+
+            this.BindNewStudent();
+        }
+
+        private void BindNewStudent()
+        {
+
+            Repository.NewStudent repoNewStudent = new NewStudent();
+            List<Repository.Entity.NewStudent> students = repoNewStudent.GetList("");
+
+            this.gridControl1.DataSource = students;
+
+            //this.lblTotalStudents.Text = students.Count.ToString();
+        }
+
+        private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.Info.IsRowIndicator && e.RowHandle >= 0)
+            {
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+            }
+        }
+
+        private void btnSetEnrollment_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if(this.gridView1.GetSelectedRows().Length > 0)
+            {
+
+            }
+
+            this.repoNewStudent.SetEnrollment(1, 1); // 1 would be enrollment
         }
     }
 }

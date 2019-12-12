@@ -137,5 +137,10 @@ namespace MHSSystem.FormControls
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
             }
         }
+
+        private void NewStudentListControl_Load(object sender, EventArgs e)
+        {
+            this.BindNewStudent();
+        }
     }
 }

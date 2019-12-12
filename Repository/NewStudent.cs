@@ -64,7 +64,7 @@ namespace Repository
         }
 
 
-        public int SetNoRegister(int id, int flag)
+        public int SetEnrollment(int id, int flag)
         {
             // flag
             // 1：已报到
