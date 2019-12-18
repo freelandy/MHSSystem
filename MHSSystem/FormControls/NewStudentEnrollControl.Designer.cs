@@ -36,7 +36,7 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.btnSetEnrollment = new DevExpress.XtraBars.BarButtonItem();
-            this.btnSetNoEnrollment = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDeSetEnrollment = new DevExpress.XtraBars.BarButtonItem();
             this.btnEndEnrollment = new DevExpress.XtraBars.BarButtonItem();
             this.btnSetLiberalArts = new DevExpress.XtraBars.BarButtonItem();
             this.btnSetScience = new DevExpress.XtraBars.BarButtonItem();
@@ -203,7 +203,7 @@
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btnSetEnrollment,
-            this.btnSetNoEnrollment,
+            this.btnDeSetEnrollment,
             this.toggleReadIDCard,
             this.toggleFaceVerification,
             this.btnSetLiberalArts,
@@ -219,7 +219,7 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSetEnrollment),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnSetNoEnrollment),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnDeSetEnrollment),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnEndEnrollment, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSetLiberalArts, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSetScience),
@@ -237,14 +237,15 @@
             this.btnSetEnrollment.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.btnSetEnrollment.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSetEnrollment_ItemClick);
             // 
-            // btnSetNoEnrollment
+            // btnDeSetEnrollment
             // 
-            this.btnSetNoEnrollment.Caption = "取消报到";
-            this.btnSetNoEnrollment.Id = 1;
-            this.btnSetNoEnrollment.ImageOptions.Image = global::MHSSystem.Properties.Resources.cancel_16x16;
-            this.btnSetNoEnrollment.ImageOptions.LargeImage = global::MHSSystem.Properties.Resources.cancel_32x32;
-            this.btnSetNoEnrollment.Name = "btnSetNoEnrollment";
-            this.btnSetNoEnrollment.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.btnDeSetEnrollment.Caption = "取消报到";
+            this.btnDeSetEnrollment.Id = 1;
+            this.btnDeSetEnrollment.ImageOptions.Image = global::MHSSystem.Properties.Resources.cancel_16x16;
+            this.btnDeSetEnrollment.ImageOptions.LargeImage = global::MHSSystem.Properties.Resources.cancel_32x32;
+            this.btnDeSetEnrollment.Name = "btnDeSetEnrollment";
+            this.btnDeSetEnrollment.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.btnDeSetEnrollment.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDeSetEnrollment_ItemClick);
             // 
             // btnEndEnrollment
             // 
@@ -1264,7 +1265,7 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.BarButtonItem btnSetEnrollment;
-        private DevExpress.XtraBars.BarButtonItem btnSetNoEnrollment;
+        private DevExpress.XtraBars.BarButtonItem btnDeSetEnrollment;
         private DevExpress.XtraBars.BarToggleSwitchItem toggleReadIDCard;
         private DevExpress.XtraBars.BarToggleSwitchItem toggleFaceVerification;
         private DevExpress.XtraBars.BarButtonItem btnSetScience;

@@ -54,12 +54,39 @@ namespace MHSSystem.FormControls
 
         private void btnSetEnrollment_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if(this.gridView1.GetSelectedRows().Length > 0)
-            {
+            // get data 
+            Repository.Entity.NewStudent newStudent = (Repository.Entity.NewStudent)this.gridView1.GetFocusedRow();
 
+            if (newStudent != null)
+            {
+                this.repoNewStudent.SetEnrollment(newStudent.ID, 1); // 1 would be enrollment
+
+                this.BindNewStudent();
+
+                // locate the modified row
+                this.gridView1.FocusedRowHandle = this.gridView1.LocateByValue("ID", newStudent.ID);
+            }
+        }
+
+        private void btnDeSetEnrollment_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if(XtraMessageBox.Show("取消选中学生的已报道状态?","提示",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
             }
 
-            this.repoNewStudent.SetEnrollment(1, 1); // 1 would be enrollment
+            // get data 
+            Repository.Entity.NewStudent newStudent = (Repository.Entity.NewStudent)this.gridView1.GetFocusedRow();
+
+            if (newStudent != null)
+            {
+                this.repoNewStudent.SetEnrollment(newStudent.ID, 0); // 0 would be enrollment
+
+                this.BindNewStudent();
+
+                // locate the modified row
+                this.gridView1.FocusedRowHandle = this.gridView1.LocateByValue("ID", newStudent.ID);
+            }
         }
     }
 }
