@@ -16,6 +16,6 @@
   <mruf value="D:\projects\MHSSystem\db\建表_初始化数据.sql" />
   <mruf value="E:\Downloads\OpenAuth.Net\建表&amp;初始化数据.sql" />
   <mruf value="D:\projects\MHSSystem\create tables.sql" />
-  <mru type="SQLite" value="D:\Projects\MHSSystem\db\db.db" v="2" l="0" e="" a="0" d="2019/12/12" b="" z="TABLES (8)\NewStudent|1|">
+  <mru type="SQLite" value="D:\Projects\MHSSystem\MHSSystem\bin\Debug\db.db" v="2" l="0" e="" a="0" d="2019/12/18" b="">
   </mru>
 </DatabaseNET>

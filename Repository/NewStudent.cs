@@ -69,7 +69,7 @@ namespace Repository
             // flag
             // 1：已报到
             // 2：未报到
-            string sql = "update [student] set sfbd=" + flag + " where ID=" + id.ToString();
+            string sql = "update [newstudent] set sfbd=" + flag + " where ID=" + id.ToString();
             int ret = db.Execute(sql);
 
             return ret;
