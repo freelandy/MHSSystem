@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DatabaseNET>
   <License LicenseCode="" />
-  <Settings ResultsFont="Segoe UI" ResultsFontSize="9" DefaultFont="Segoe UI" DefaultFontSize="9" Language="chinese_s.xml" CheckDate="2" CodeDir="Database_Files" ExecCount="13" LastAccessed="12" Maximize="True" pnlControlLeftWidth="280" ToolStrip1Left="3" ToolStrip1Top="0" ToolStrip2Left="196" ToolStrip2Top="0" ToolStrip3Left="731" ToolStrip3Top="0" ToolStrip4Left="906" ToolStrip4Top="0" CheckedVersion="28.6.7181.1" Left="320" Top="70" Width="1280" Height="900" Delimiter="9" FindMatchCase="False" FindMatchWord="True" FindRegex="False">
+  <Settings ResultsFont="Segoe UI" ResultsFontSize="9" DefaultFont="Segoe UI" DefaultFontSize="9" Language="chinese_s.xml" CheckDate="2" CodeDir="Database_Files" ExecCount="13" LastAccessed="18" Maximize="True" pnlControlLeftWidth="280" ToolStrip1Left="3" ToolStrip1Top="0" ToolStrip2Left="196" ToolStrip2Top="0" ToolStrip3Left="731" ToolStrip3Top="0" ToolStrip4Left="906" ToolStrip4Top="0" CheckedVersion="28.6.7181.1" Left="320" Top="70" Width="1280" Height="900" Delimiter="9" FindMatchCase="False" FindMatchWord="True" FindRegex="False">
     <Additional2FB DatabaseEngine="Default">
     </Additional2FB>
     <Additional2OLEDB>
@@ -16,6 +16,6 @@
   <mruf value="D:\projects\MHSSystem\db\建表_初始化数据.sql" />
   <mruf value="E:\Downloads\OpenAuth.Net\建表&amp;初始化数据.sql" />
   <mruf value="D:\projects\MHSSystem\create tables.sql" />
-  <mru type="SQLite" value="D:\Projects\MHSSystem\MHSSystem\bin\Debug\db.db" v="2" l="0" e="" a="0" d="2019/12/18" b="">
+  <mru type="SQLite" value="D:\Projects\MHSSystem\MHSSystem\bin\Debug\db.db" v="2" l="0" e="" a="0" d="2019/12/18" b="" z="TABLES (8)\NewStudent|1|">
   </mru>
 </DatabaseNET>
