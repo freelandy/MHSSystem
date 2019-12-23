@@ -128,6 +128,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ExcelHelper.cs" />
+    <EmbeddedResource Include="FormControls\NewStudentAssignClassControl.resx">
+      <DependentUpon>NewStudentAssignClassControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormControls\NewStudentEnrollControl.resx">
       <DependentUpon>NewStudentEnrollControl.cs</DependentUpon>
     </EmbeddedResource>
