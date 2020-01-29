@@ -16,10 +16,4 @@
     <None Include="Dapper\Contrib\SqlMapperExtensions.Async.cs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="System.Data.SQLite">
-      <HintPath>..\3rd_party\System.Data.SQLite.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

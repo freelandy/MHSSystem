@@ -26,7 +26,7 @@ namespace MHSSystem.Forms
             //if (loginForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             //{
                 // show splash form
-                DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(Forms.SplashForm));
+                //DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(Forms.SplashForm));
 
                 // do something time-comsuming
                 foreach (DevExpress.Skins.SkinContainer skin in DevExpress.Skins.SkinManager.Default.Skins)
@@ -57,6 +57,13 @@ namespace MHSSystem.Forms
             FormControls.NewStudentEnrollControl c = new FormControls.NewStudentEnrollControl();
             c.Dock = DockStyle.Fill;
             this.xtraTabControl1.TabPages[1].Controls.Add(c);
+        }
+
+        private void btnNewStudentAssignClassMgr_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            FormControls.NewStudentAssignClassControl c = new FormControls.NewStudentAssignClassControl();
+            c.Dock = DockStyle.Fill;
+            this.xtraTabControl1.TabPages[2].Controls.Add(c);
         }
     }
 }

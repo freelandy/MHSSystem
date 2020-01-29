@@ -153,9 +153,29 @@ namespace MHSSystem.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap apply_16x161 {
+            get {
+                object obj = ResourceManager.GetObject("apply_16x161", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap apply_32x32 {
             get {
                 object obj = ResourceManager.GetObject("apply_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap apply_32x321 {
+            get {
+                object obj = ResourceManager.GetObject("apply_32x321", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -353,6 +373,26 @@ namespace MHSSystem.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap open_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("open_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap open_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("open_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap pageprev_16x16 {
             get {
                 object obj = ResourceManager.GetObject("pageprev_16x16", resourceCulture);
@@ -386,6 +426,26 @@ namespace MHSSystem.Properties {
         internal static System.Drawing.Bitmap refresh_32x32 {
             get {
                 object obj = ResourceManager.GetObject("refresh_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap shoppingcart_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("shoppingcart_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap shoppingcart_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("shoppingcart_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
