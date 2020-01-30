@@ -52,11 +52,11 @@ namespace Repository
             }
         }
 
-        public int SetLiberalArts(int id, int flag)
+        public int SetLiberalArts(int id, bool flag)
         {
             // flag
-            // 1：文科
-            // 2：理科
+            // true：文科
+            // false：理科
             string sql = "update [NewStudent] set sfwk=" + flag + " where ID=" + id.ToString();
             int ret = db.Execute(sql);
 
@@ -64,17 +64,47 @@ namespace Repository
         }
 
 
-        public int SetEnrollment(int id, int flag)
+        public void SetEnrollment(int id, string time)
         {
             // flag
-            // 1：已报到
-            // 2：未报到
-            string sql = "update [newstudent] set sfbd=" + flag + " where ID=" + id.ToString();
-            int ret = db.Execute(sql);
+            // true：已报到
+            // false：未报到
+            string sql1 = "update [newstudent] set sfbd=1 where ID=" + id.ToString();
+            string sql2 = "insert into [Enrollment] set EnrollmentTime='" + time + "',NewStudentId=" + id.ToString();
 
-            return ret;
+
+            if (db.State == ConnectionState.Closed)
+            {
+                db.Open();
+            }
+            using (var transaction = db.BeginTransaction())
+            {
+                db.Execute(sql1, transaction);
+                db.Execute(sql2, transaction);
+                transaction.Commit();
+            }
         }
 
-        
+        public void DeSetEnrollment(int id)
+        {
+            // flag
+            // true：已报到
+            // false：未报到
+            string sql1 = "update [newstudent] set sfbd=0 where ID=" + id.ToString();
+            string sql2 = "delete from [Enrollment] where NewStudentId=" + id.ToString();
+
+
+            if (db.State == ConnectionState.Closed)
+            {
+                db.Open();
+            }
+            using (var transaction = db.BeginTransaction())
+            {
+                db.Execute(sql1, transaction);
+                db.Execute(sql2, transaction);
+                transaction.Commit();
+            }
+        }
+
     }
 }

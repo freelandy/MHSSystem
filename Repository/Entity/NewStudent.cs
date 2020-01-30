@@ -228,5 +228,10 @@ namespace Repository.Entity
         /// 未报到/已报到
         /// </summary>
         public int sfbd { set; get; }
+
+        /// <summary>
+        /// 报到信息
+        /// </summary>
+        public Enrollment enrollment { set; get; }
     }
 }

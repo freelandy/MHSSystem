@@ -9,11 +9,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Repository</RootNamespace>
     <AssemblyName>Repository</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,6 +38,7 @@
   <ItemGroup>
     <Compile Include="Entity\Class.cs" />
     <Compile Include="Entity\ClassAssignment.cs" />
+    <Compile Include="Entity\Enrollment.cs" />
     <Compile Include="Entity\NewStudent.cs" />
     <Compile Include="NewStudent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
