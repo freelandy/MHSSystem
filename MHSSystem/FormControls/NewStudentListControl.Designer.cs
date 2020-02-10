@@ -294,7 +294,7 @@
             this.gridView1.FooterPanelHeight = 0;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.GroupRowHeight = 0;
-            this.gridView1.IndicatorWidth = 40;
+            this.gridView1.IndicatorWidth = 50;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -304,6 +304,7 @@
             this.gridView1.OptionsCustomization.AllowGroup = false;
             this.gridView1.OptionsCustomization.AllowQuickHideColumns = false;
             this.gridView1.OptionsFind.AlwaysVisible = true;
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
@@ -314,6 +315,7 @@
             // ID
             // 
             this.ID.Caption = "ID";
+            this.ID.FieldName = "NewStudentId";
             this.ID.Name = "ID";
             // 
             // zkzh
@@ -654,16 +656,12 @@
             this.sfwk.Caption = "文科/理科";
             this.sfwk.FieldName = "sfwk";
             this.sfwk.Name = "sfwk";
-            this.sfwk.Visible = true;
-            this.sfwk.VisibleIndex = 41;
             // 
             // sfbd
             // 
             this.sfbd.Caption = "是否报到";
             this.sfbd.FieldName = "sfbd";
             this.sfbd.Name = "sfbd";
-            this.sfbd.Visible = true;
-            this.sfbd.VisibleIndex = 42;
             // 
             // Root
             // 

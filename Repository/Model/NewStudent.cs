@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Repository.Entity
+namespace Repository.Model
 {
     public class NewStudent
     {
         /// <summary>
         /// 
         /// </summary>
-        public int ID { set; get; }
+        [Key]
+        [Column("ID")]
+        public int NewStudentId { set; get; } // 默认的主键是Id
 
         /// <summary>
         /// 准考证号
@@ -230,8 +234,14 @@ namespace Repository.Entity
         public int sfbd { set; get; }
 
         /// <summary>
-        /// 报到信息
+        /// 报到信息导航属性
         /// </summary>
-        public Enrollment enrollment { set; get; }
+        public Enrollment Enrollment { set; get; }
+
+
+        /// <summary>
+        /// 班级信息导航属性
+        /// </summary>
+        public Class Class { set; get; }
     }
 }

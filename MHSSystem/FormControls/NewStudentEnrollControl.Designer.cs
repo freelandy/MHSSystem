@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             this.sfbd = new DevExpress.XtraGrid.Columns.GridColumn();
             this.zkzh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -95,6 +95,7 @@
             this.lgss = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lqxx = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sfwk = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.bdsj = new DevExpress.XtraGrid.Columns.GridColumn();
             this.imageBox1 = new Emgu.CV.UI.ImageBox();
             this.linkInformation1 = new DevExpress.XtraEditors.HyperLinkEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -137,7 +138,7 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.bdsj = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -191,22 +192,18 @@
             // 
             this.sfbd.Caption = "是否报到";
             this.sfbd.FieldName = "sfbd";
-            this.sfbd.MinWidth = 37;
             this.sfbd.Name = "sfbd";
-            this.sfbd.Width = 139;
             // 
             // zkzh
             // 
             this.zkzh.Caption = "准考证号";
             this.zkzh.FieldName = "zkzh";
-            this.zkzh.MinWidth = 37;
             this.zkzh.Name = "zkzh";
             this.zkzh.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(),
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "zkzh", "共{0:D}条记录")});
             this.zkzh.Visible = true;
             this.zkzh.VisibleIndex = 0;
-            this.zkzh.Width = 139;
             // 
             // barManager1
             // 
@@ -225,8 +222,9 @@
             this.btnSetLiberalArts,
             this.btnSetScience,
             this.btnEndEnrollment,
-            this.btnStatics});
-            this.barManager1.MaxItemId = 8;
+            this.btnStatics,
+            this.barCheckItem1});
+            this.barManager1.MaxItemId = 9;
             // 
             // bar1
             // 
@@ -237,7 +235,7 @@
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSetEnrollment),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDeSetEnrollment),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnEndEnrollment, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnEndEnrollment, "", false, true, false, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSetLiberalArts, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSetScience),
             new DevExpress.XtraBars.LinkPersistInfo(this.toggleReadIDCard, true),
@@ -249,6 +247,7 @@
             // 
             this.btnSetEnrollment.Caption = "报到";
             this.btnSetEnrollment.Id = 0;
+            this.btnSetEnrollment.ImageOptions.Image = global::MHSSystem.Properties.Resources.apply_16x16;
             this.btnSetEnrollment.Name = "btnSetEnrollment";
             this.btnSetEnrollment.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.btnSetEnrollment.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSetEnrollment_ItemClick);
@@ -257,6 +256,7 @@
             // 
             this.btnDeSetEnrollment.Caption = "取消报到";
             this.btnDeSetEnrollment.Id = 1;
+            this.btnDeSetEnrollment.ImageOptions.Image = global::MHSSystem.Properties.Resources.cancel_16x16;
             this.btnDeSetEnrollment.Name = "btnDeSetEnrollment";
             this.btnDeSetEnrollment.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.btnDeSetEnrollment.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDeSetEnrollment_ItemClick);
@@ -271,6 +271,7 @@
             // 
             this.btnSetLiberalArts.Caption = "文科生";
             this.btnSetLiberalArts.Id = 4;
+            this.btnSetLiberalArts.ImageOptions.Image = global::MHSSystem.Properties.Resources.edit_16x16;
             this.btnSetLiberalArts.Name = "btnSetLiberalArts";
             this.btnSetLiberalArts.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.btnSetLiberalArts.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSetLiberalArts_ItemClick);
@@ -279,6 +280,7 @@
             // 
             this.btnSetScience.Caption = "理科生";
             this.btnSetScience.Id = 5;
+            this.btnSetScience.ImageOptions.Image = global::MHSSystem.Properties.Resources.customization_16x16;
             this.btnSetScience.Name = "btnSetScience";
             this.btnSetScience.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.btnSetScience.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSetScience_ItemClick);
@@ -299,7 +301,10 @@
             // 
             this.btnStatics.Caption = "统计";
             this.btnStatics.Id = 7;
+            this.btnStatics.ImageOptions.Image = global::MHSSystem.Properties.Resources.table_16x16;
+            this.btnStatics.ImageOptions.LargeImage = global::MHSSystem.Properties.Resources.table_32x32;
             this.btnStatics.Name = "btnStatics";
+            this.btnStatics.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // barDockControlTop
             // 
@@ -307,35 +312,35 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.barDockControlTop.Size = new System.Drawing.Size(2178, 42);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.barDockControlTop.Size = new System.Drawing.Size(1173, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 1301);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 628);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.barDockControlBottom.Size = new System.Drawing.Size(2178, 0);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1173, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 42);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 1259);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 604);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(2178, 42);
+            this.barDockControlRight.Location = new System.Drawing.Point(1173, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 1259);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 604);
             // 
             // layoutControl1
             // 
@@ -358,56 +363,59 @@
             this.layoutControl1.Controls.Add(this.txtXb);
             this.layoutControl1.Controls.Add(this.txtXm);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 42);
-            this.layoutControl1.Margin = new System.Windows.Forms.Padding(19, 21, 19, 21);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 24);
+            this.layoutControl1.Margin = new System.Windows.Forms.Padding(10);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(245, 82, 1300, 800);
             this.layoutControl1.OptionsView.IsReadOnly = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControl1.Padding = new System.Windows.Forms.Padding(9, 10, 9, 10);
+            this.layoutControl1.Padding = new System.Windows.Forms.Padding(5);
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(2178, 1259);
+            this.layoutControl1.Size = new System.Drawing.Size(1173, 604);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // txtBdsj
             // 
-            this.txtBdsj.Location = new System.Drawing.Point(686, 1084);
+            this.txtBdsj.Location = new System.Drawing.Point(359, 502);
+            this.txtBdsj.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtBdsj.MenuManager = this.barManager1;
             this.txtBdsj.Name = "txtBdsj";
             this.txtBdsj.Properties.ReadOnly = true;
-            this.txtBdsj.Size = new System.Drawing.Size(459, 44);
+            this.txtBdsj.Size = new System.Drawing.Size(226, 20);
             this.txtBdsj.StyleController = this.layoutControl1;
             this.txtBdsj.TabIndex = 22;
             // 
             // txtSfwk
             // 
-            this.txtSfwk.Location = new System.Drawing.Point(134, 1084);
+            this.txtSfwk.Location = new System.Drawing.Point(81, 502);
+            this.txtSfwk.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtSfwk.MenuManager = this.barManager1;
             this.txtSfwk.Name = "txtSfwk";
             this.txtSfwk.Properties.ReadOnly = true;
-            this.txtSfwk.Size = new System.Drawing.Size(420, 44);
+            this.txtSfwk.Size = new System.Drawing.Size(207, 20);
             this.txtSfwk.StyleController = this.layoutControl1;
             this.txtSfwk.TabIndex = 21;
             // 
             // linkInformation2
             // 
-            this.linkInformation2.Location = new System.Drawing.Point(25, 1190);
+            this.linkInformation2.Location = new System.Drawing.Point(24, 560);
+            this.linkInformation2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.linkInformation2.MenuManager = this.barManager1;
             this.linkInformation2.Name = "linkInformation2";
             this.linkInformation2.Properties.ReadOnly = true;
-            this.linkInformation2.Size = new System.Drawing.Size(1120, 44);
+            this.linkInformation2.Size = new System.Drawing.Size(561, 20);
             this.linkInformation2.StyleController = this.layoutControl1;
             this.linkInformation2.TabIndex = 20;
             // 
             // gridControl1
             // 
-            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.gridControl1.Location = new System.Drawing.Point(12, 12);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Margin = new System.Windows.Forms.Padding(0);
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(2154, 832);
+            this.gridControl1.Size = new System.Drawing.Size(1149, 363);
             this.gridControl1.TabIndex = 19;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -463,21 +471,23 @@
             this.sfwk,
             this.sfbd,
             this.bdsj});
+            this.gridView1.DetailHeight = 169;
+            this.gridView1.FixedLineWidth = 1;
             this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.gridView1.FooterPanelHeight = 0;
-            gridFormatRule1.ApplyToRow = true;
-            gridFormatRule1.Column = this.sfbd;
-            gridFormatRule1.ColumnApplyTo = this.zkzh;
-            gridFormatRule1.Name = "Format0";
-            formatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            formatConditionRuleValue1.Appearance.Options.UseBackColor = true;
-            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue1.Value1 = "0";
-            gridFormatRule1.Rule = formatConditionRuleValue1;
-            this.gridView1.FormatRules.Add(gridFormatRule1);
+            gridFormatRule2.ApplyToRow = true;
+            gridFormatRule2.Column = this.sfbd;
+            gridFormatRule2.ColumnApplyTo = this.zkzh;
+            gridFormatRule2.Name = "Format0";
+            formatConditionRuleValue2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            formatConditionRuleValue2.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue2.Value1 = "0";
+            gridFormatRule2.Rule = formatConditionRuleValue2;
+            this.gridView1.FormatRules.Add(gridFormatRule2);
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.GroupRowHeight = 0;
-            this.gridView1.IndicatorWidth = 100;
+            this.gridView1.IndicatorWidth = 50;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -500,189 +510,151 @@
             // ID
             // 
             this.ID.Caption = "ID";
-            this.ID.MinWidth = 37;
             this.ID.Name = "ID";
-            this.ID.Width = 139;
             // 
             // xm
             // 
             this.xm.Caption = "姓名";
             this.xm.FieldName = "xm";
-            this.xm.MinWidth = 37;
             this.xm.Name = "xm";
             this.xm.Visible = true;
             this.xm.VisibleIndex = 1;
-            this.xm.Width = 139;
             // 
             // bmdz
             // 
             this.bmdz.Caption = "报名地州";
             this.bmdz.FieldName = "bmdz";
-            this.bmdz.MinWidth = 37;
             this.bmdz.Name = "bmdz";
             this.bmdz.Visible = true;
             this.bmdz.VisibleIndex = 2;
-            this.bmdz.Width = 139;
             // 
             // bmxs
             // 
             this.bmxs.Caption = "报名县市";
             this.bmxs.FieldName = "bmxs";
-            this.bmxs.MinWidth = 37;
             this.bmxs.Name = "bmxs";
             this.bmxs.Visible = true;
             this.bmxs.VisibleIndex = 3;
-            this.bmxs.Width = 139;
             // 
             // bmxx
             // 
             this.bmxx.Caption = "报名学校";
             this.bmxx.FieldName = "bmxx";
-            this.bmxx.MinWidth = 37;
             this.bmxx.Name = "bmxx";
             this.bmxx.Visible = true;
             this.bmxx.VisibleIndex = 4;
-            this.bmxx.Width = 139;
             // 
             // bmhkdz
             // 
             this.bmhkdz.Caption = "报名户口地州";
             this.bmhkdz.FieldName = "bmhkdz";
-            this.bmhkdz.MinWidth = 37;
             this.bmhkdz.Name = "bmhkdz";
             this.bmhkdz.Visible = true;
             this.bmhkdz.VisibleIndex = 5;
-            this.bmhkdz.Width = 139;
             // 
             // sjsydz
             // 
             this.sjsydz.Caption = "实际生源地州";
             this.sjsydz.FieldName = "sjsydz";
-            this.sjsydz.MinWidth = 37;
             this.sjsydz.Name = "sjsydz";
             this.sjsydz.Visible = true;
             this.sjsydz.VisibleIndex = 6;
-            this.sjsydz.Width = 139;
             // 
             // ywcj
             // 
             this.ywcj.Caption = "语文成绩";
             this.ywcj.FieldName = "ywcj";
-            this.ywcj.MinWidth = 37;
             this.ywcj.Name = "ywcj";
             this.ywcj.Visible = true;
             this.ywcj.VisibleIndex = 7;
-            this.ywcj.Width = 139;
             // 
             // wlhxcj
             // 
             this.wlhxcj.Caption = "物理/化学成绩";
             this.wlhxcj.FieldName = "wlhxcj";
-            this.wlhxcj.MinWidth = 37;
             this.wlhxcj.Name = "wlhxcj";
             this.wlhxcj.Visible = true;
             this.wlhxcj.VisibleIndex = 8;
-            this.wlhxcj.Width = 139;
             // 
             // sxcj
             // 
             this.sxcj.Caption = "数学成绩";
             this.sxcj.FieldName = "sxcj";
-            this.sxcj.MinWidth = 37;
             this.sxcj.Name = "sxcj";
             this.sxcj.Visible = true;
             this.sxcj.VisibleIndex = 9;
-            this.sxcj.Width = 139;
             // 
             // ddyfzlscj
             // 
             this.ddyfzlscj.Caption = "道德与法治/历史成绩";
             this.ddyfzlscj.FieldName = "ddyfzlscj";
-            this.ddyfzlscj.MinWidth = 37;
             this.ddyfzlscj.Name = "ddyfzlscj";
             this.ddyfzlscj.Visible = true;
             this.ddyfzlscj.VisibleIndex = 10;
-            this.ddyfzlscj.Width = 139;
             // 
             // wycj
             // 
             this.wycj.Caption = "外语成绩";
             this.wycj.FieldName = "wycj";
-            this.wycj.MinWidth = 37;
             this.wycj.Name = "wycj";
             this.wycj.Visible = true;
             this.wycj.VisibleIndex = 11;
-            this.wycj.Width = 139;
             // 
             // zcj
             // 
             this.zcj.Caption = "总成绩（不加体育）";
             this.zcj.FieldName = "zcj";
-            this.zcj.MinWidth = 37;
             this.zcj.Name = "zcj";
             this.zcj.Visible = true;
             this.zcj.VisibleIndex = 12;
-            this.zcj.Width = 139;
             // 
             // tycj
             // 
             this.tycj.Caption = "体育成绩";
             this.tycj.FieldName = "tycj";
-            this.tycj.MinWidth = 37;
             this.tycj.Name = "tycj";
             this.tycj.Visible = true;
             this.tycj.VisibleIndex = 13;
-            this.tycj.Width = 139;
             // 
             // sfzh
             // 
             this.sfzh.Caption = "身份证号";
             this.sfzh.FieldName = "sfzh";
-            this.sfzh.MinWidth = 37;
             this.sfzh.Name = "sfzh";
             this.sfzh.Visible = true;
             this.sfzh.VisibleIndex = 14;
-            this.sfzh.Width = 139;
             // 
             // xjh
             // 
             this.xjh.Caption = "学籍号";
             this.xjh.FieldName = "xjh";
-            this.xjh.MinWidth = 37;
             this.xjh.Name = "xjh";
             this.xjh.Visible = true;
             this.xjh.VisibleIndex = 15;
-            this.xjh.Width = 139;
             // 
             // sy
             // 
             this.sy.Caption = "生源";
             this.sy.FieldName = "sy";
-            this.sy.MinWidth = 37;
             this.sy.Name = "sy";
             this.sy.Visible = true;
             this.sy.VisibleIndex = 16;
-            this.sy.Width = 139;
             // 
             // zb
             // 
             this.zb.Caption = "族别";
             this.zb.FieldName = "zb";
-            this.zb.MinWidth = 37;
             this.zb.Name = "zb";
             this.zb.Visible = true;
             this.zb.VisibleIndex = 17;
-            this.zb.Width = 139;
             // 
             // xb
             // 
             this.xb.Caption = "性别";
             this.xb.FieldName = "xb";
-            this.xb.MinWidth = 37;
             this.xb.Name = "xb";
             this.xb.Visible = true;
             this.xb.VisibleIndex = 18;
-            this.xb.Width = 139;
             // 
             // csrq
             // 
@@ -690,249 +662,210 @@
             this.csrq.DisplayFormat.FormatString = "yyyy-MM-dd";
             this.csrq.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.csrq.FieldName = "csrq";
-            this.csrq.MinWidth = 37;
             this.csrq.Name = "csrq";
             this.csrq.Visible = true;
             this.csrq.VisibleIndex = 19;
-            this.csrq.Width = 139;
             // 
             // bj
             // 
             this.bj.Caption = "班级";
             this.bj.FieldName = "bj";
-            this.bj.MinWidth = 37;
             this.bj.Name = "bj";
             this.bj.Visible = true;
             this.bj.VisibleIndex = 20;
-            this.bj.Width = 139;
             // 
             // kstz
             // 
             this.kstz.Caption = "考生特征";
             this.kstz.FieldName = "kstz";
-            this.kstz.MinWidth = 37;
             this.kstz.Name = "kstz";
             this.kstz.Visible = true;
             this.kstz.VisibleIndex = 21;
-            this.kstz.Width = 139;
             // 
             // zzmm
             // 
             this.zzmm.Caption = "政治面貌";
             this.zzmm.FieldName = "zzmm";
-            this.zzmm.MinWidth = 37;
             this.zzmm.Name = "zzmm";
             this.zzmm.Visible = true;
             this.zzmm.VisibleIndex = 22;
-            this.zzmm.Width = 139;
             // 
             // hkxz
             // 
             this.hkxz.Caption = "户口性质";
             this.hkxz.FieldName = "hkxz";
-            this.hkxz.MinWidth = 37;
             this.hkxz.Name = "hkxz";
             this.hkxz.Visible = true;
             this.hkxz.VisibleIndex = 23;
-            this.hkxz.Width = 139;
             // 
             // txdz
             // 
             this.txdz.Caption = "通讯地址";
             this.txdz.FieldName = "txdz";
-            this.txdz.MinWidth = 37;
             this.txdz.Name = "txdz";
             this.txdz.Visible = true;
             this.txdz.VisibleIndex = 24;
-            this.txdz.Width = 139;
             // 
             // lxdh
             // 
             this.lxdh.Caption = "联系电话";
             this.lxdh.FieldName = "lxdh";
-            this.lxdh.MinWidth = 37;
             this.lxdh.Name = "lxdh";
             this.lxdh.Visible = true;
             this.lxdh.VisibleIndex = 25;
-            this.lxdh.Width = 139;
             // 
             // yzbm
             // 
             this.yzbm.Caption = "邮政编码";
             this.yzbm.FieldName = "yzbm";
-            this.yzbm.MinWidth = 37;
             this.yzbm.Name = "yzbm";
             this.yzbm.Visible = true;
             this.yzbm.VisibleIndex = 26;
-            this.yzbm.Width = 139;
             // 
             // fqxm
             // 
             this.fqxm.Caption = "父亲姓名";
             this.fqxm.FieldName = "fqxm";
-            this.fqxm.MinWidth = 37;
             this.fqxm.Name = "fqxm";
             this.fqxm.Visible = true;
             this.fqxm.VisibleIndex = 27;
-            this.fqxm.Width = 139;
             // 
             // fqsfzh
             // 
             this.fqsfzh.Caption = "父亲身份证号";
             this.fqsfzh.FieldName = "fqsfzh";
-            this.fqsfzh.MinWidth = 37;
             this.fqsfzh.Name = "fqsfzh";
             this.fqsfzh.Visible = true;
             this.fqsfzh.VisibleIndex = 28;
-            this.fqsfzh.Width = 139;
             // 
             // fqzb
             // 
             this.fqzb.Caption = "父亲族别";
             this.fqzb.FieldName = "fqzb";
-            this.fqzb.MinWidth = 37;
             this.fqzb.Name = "fqzb";
             this.fqzb.Visible = true;
             this.fqzb.VisibleIndex = 29;
-            this.fqzb.Width = 139;
             // 
             // fqhkxz
             // 
             this.fqhkxz.Caption = "父亲户口性质";
             this.fqhkxz.FieldName = "fqhkxz";
-            this.fqhkxz.MinWidth = 37;
             this.fqhkxz.Name = "fqhkxz";
             this.fqhkxz.Visible = true;
             this.fqhkxz.VisibleIndex = 30;
-            this.fqhkxz.Width = 139;
             // 
             // fqlxdh
             // 
             this.fqlxdh.Caption = "父亲联系电话";
             this.fqlxdh.FieldName = "fqlxdh";
-            this.fqlxdh.MinWidth = 37;
             this.fqlxdh.Name = "fqlxdh";
             this.fqlxdh.Visible = true;
             this.fqlxdh.VisibleIndex = 31;
-            this.fqlxdh.Width = 139;
             // 
             // fqgzdw
             // 
             this.fqgzdw.Caption = "父亲工作单位";
             this.fqgzdw.FieldName = "fqgzdw";
-            this.fqgzdw.MinWidth = 37;
             this.fqgzdw.Name = "fqgzdw";
             this.fqgzdw.Visible = true;
             this.fqgzdw.VisibleIndex = 32;
-            this.fqgzdw.Width = 139;
             // 
             // mqxm
             // 
             this.mqxm.Caption = "母亲姓名";
             this.mqxm.FieldName = "mqxm";
-            this.mqxm.MinWidth = 37;
             this.mqxm.Name = "mqxm";
             this.mqxm.Visible = true;
             this.mqxm.VisibleIndex = 33;
-            this.mqxm.Width = 139;
             // 
             // mqsfzh
             // 
             this.mqsfzh.Caption = "母亲身份证号";
             this.mqsfzh.FieldName = "mqsfzh";
-            this.mqsfzh.MinWidth = 37;
             this.mqsfzh.Name = "mqsfzh";
             this.mqsfzh.Visible = true;
             this.mqsfzh.VisibleIndex = 34;
-            this.mqsfzh.Width = 139;
             // 
             // mqzb
             // 
             this.mqzb.Caption = "母亲族别";
             this.mqzb.FieldName = "mqzb";
-            this.mqzb.MinWidth = 37;
             this.mqzb.Name = "mqzb";
             this.mqzb.Visible = true;
             this.mqzb.VisibleIndex = 35;
-            this.mqzb.Width = 139;
             // 
             // mqhkxz
             // 
             this.mqhkxz.Caption = "母亲户口性质";
             this.mqhkxz.FieldName = "mqhkxz";
-            this.mqhkxz.MinWidth = 37;
             this.mqhkxz.Name = "mqhkxz";
             this.mqhkxz.Visible = true;
             this.mqhkxz.VisibleIndex = 36;
-            this.mqhkxz.Width = 139;
             // 
             // mqlxdh
             // 
             this.mqlxdh.Caption = "母亲联系电话";
             this.mqlxdh.FieldName = "mqlxdh";
-            this.mqlxdh.MinWidth = 37;
             this.mqlxdh.Name = "mqlxdh";
             this.mqlxdh.Visible = true;
             this.mqlxdh.VisibleIndex = 37;
-            this.mqlxdh.Width = 139;
             // 
             // mqgzdw
             // 
             this.mqgzdw.Caption = "母亲工作单位";
             this.mqgzdw.FieldName = "mqgzdw";
-            this.mqgzdw.MinWidth = 37;
             this.mqgzdw.Name = "mqgzdw";
             this.mqgzdw.Visible = true;
             this.mqgzdw.VisibleIndex = 38;
-            this.mqgzdw.Width = 139;
             // 
             // lgss
             // 
             this.lgss.Caption = "录取省市";
             this.lgss.FieldName = "lgss";
-            this.lgss.MinWidth = 37;
             this.lgss.Name = "lgss";
             this.lgss.Visible = true;
             this.lgss.VisibleIndex = 39;
-            this.lgss.Width = 139;
             // 
             // lqxx
             // 
             this.lqxx.Caption = "录取学校";
             this.lqxx.FieldName = "lqxx";
-            this.lqxx.MinWidth = 37;
             this.lqxx.Name = "lqxx";
             this.lqxx.Visible = true;
             this.lqxx.VisibleIndex = 40;
-            this.lqxx.Width = 139;
             // 
             // sfwk
             // 
             this.sfwk.Caption = "文科/理科";
             this.sfwk.FieldName = "sfwk";
-            this.sfwk.MinWidth = 37;
             this.sfwk.Name = "sfwk";
             this.sfwk.Visible = true;
             this.sfwk.VisibleIndex = 41;
-            this.sfwk.Width = 139;
+            // 
+            // bdsj
+            // 
+            this.bdsj.Caption = "报到时间";
+            this.bdsj.MinWidth = 22;
+            this.bdsj.Name = "bdsj";
+            this.bdsj.Visible = true;
+            this.bdsj.VisibleIndex = 42;
+            this.bdsj.Width = 81;
             // 
             // imageBox1
             // 
-            this.imageBox1.Location = new System.Drawing.Point(1786, 940);
-            this.imageBox1.Margin = new System.Windows.Forms.Padding(6);
+            this.imageBox1.Location = new System.Drawing.Point(953, 430);
             this.imageBox1.Name = "imageBox1";
-            this.imageBox1.Size = new System.Drawing.Size(367, 294);
+            this.imageBox1.Size = new System.Drawing.Size(196, 140);
             this.imageBox1.TabIndex = 2;
             this.imageBox1.TabStop = false;
             // 
             // linkInformation1
             // 
-            this.linkInformation1.Location = new System.Drawing.Point(25, 1142);
-            this.linkInformation1.Margin = new System.Windows.Forms.Padding(6);
+            this.linkInformation1.Location = new System.Drawing.Point(24, 536);
             this.linkInformation1.MenuManager = this.barManager1;
             this.linkInformation1.Name = "linkInformation1";
             this.linkInformation1.Properties.ReadOnly = true;
-            this.linkInformation1.Size = new System.Drawing.Size(1120, 44);
+            this.linkInformation1.Size = new System.Drawing.Size(561, 20);
             this.linkInformation1.StyleController = this.layoutControl1;
             this.linkInformation1.TabIndex = 18;
             // 
@@ -941,24 +874,22 @@
             this.labelControl3.Appearance.Options.UseTextOptions = true;
             this.labelControl3.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControl3.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.labelControl3.Location = new System.Drawing.Point(1571, 1201);
-            this.labelControl3.Margin = new System.Windows.Forms.Padding(6);
+            this.labelControl3.Location = new System.Drawing.Point(827, 556);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(185, 29);
+            this.labelControl3.Size = new System.Drawing.Size(98, 14);
             this.labelControl3.StyleController = this.layoutControl1;
             this.labelControl3.TabIndex = 16;
             this.labelControl3.Text = "现场照片";
             // 
             // pictureEdit3
             // 
-            this.pictureEdit3.Location = new System.Drawing.Point(1571, 940);
-            this.pictureEdit3.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureEdit3.Location = new System.Drawing.Point(827, 430);
             this.pictureEdit3.MenuManager = this.barManager1;
             this.pictureEdit3.Name = "pictureEdit3";
             this.pictureEdit3.Properties.ReadOnly = true;
             this.pictureEdit3.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit3.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.pictureEdit3.Size = new System.Drawing.Size(185, 257);
+            this.pictureEdit3.Size = new System.Drawing.Size(98, 122);
             this.pictureEdit3.StyleController = this.layoutControl1;
             this.pictureEdit3.TabIndex = 15;
             // 
@@ -967,24 +898,22 @@
             this.labelControl2.Appearance.Options.UseTextOptions = true;
             this.labelControl2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.labelControl2.Location = new System.Drawing.Point(1373, 1201);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(6);
+            this.labelControl2.Location = new System.Drawing.Point(720, 556);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(185, 29);
+            this.labelControl2.Size = new System.Drawing.Size(98, 14);
             this.labelControl2.StyleController = this.layoutControl1;
             this.labelControl2.TabIndex = 14;
             this.labelControl2.Text = "身份证照片";
             // 
             // pictureEdit2
             // 
-            this.pictureEdit2.Location = new System.Drawing.Point(1373, 940);
-            this.pictureEdit2.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureEdit2.Location = new System.Drawing.Point(720, 430);
             this.pictureEdit2.MenuManager = this.barManager1;
             this.pictureEdit2.Name = "pictureEdit2";
             this.pictureEdit2.Properties.ReadOnly = true;
             this.pictureEdit2.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit2.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.pictureEdit2.Size = new System.Drawing.Size(185, 257);
+            this.pictureEdit2.Size = new System.Drawing.Size(98, 122);
             this.pictureEdit2.StyleController = this.layoutControl1;
             this.pictureEdit2.TabIndex = 13;
             // 
@@ -993,89 +922,81 @@
             this.labelControl1.Appearance.Options.UseTextOptions = true;
             this.labelControl1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.labelControl1.Location = new System.Drawing.Point(1175, 1201);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(6);
+            this.labelControl1.Location = new System.Drawing.Point(613, 556);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(185, 29);
+            this.labelControl1.Size = new System.Drawing.Size(98, 14);
             this.labelControl1.StyleController = this.layoutControl1;
             this.labelControl1.TabIndex = 12;
             this.labelControl1.Text = "报考照片";
             // 
             // pictureEdit1
             // 
-            this.pictureEdit1.Location = new System.Drawing.Point(1175, 940);
-            this.pictureEdit1.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureEdit1.Location = new System.Drawing.Point(613, 430);
             this.pictureEdit1.MenuManager = this.barManager1;
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.ReadOnly = true;
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.pictureEdit1.Size = new System.Drawing.Size(185, 257);
+            this.pictureEdit1.Size = new System.Drawing.Size(98, 122);
             this.pictureEdit1.StyleController = this.layoutControl1;
             this.pictureEdit1.TabIndex = 11;
             // 
             // txtZkzh
             // 
-            this.txtZkzh.Location = new System.Drawing.Point(686, 1036);
-            this.txtZkzh.Margin = new System.Windows.Forms.Padding(6);
+            this.txtZkzh.Location = new System.Drawing.Point(359, 478);
             this.txtZkzh.MenuManager = this.barManager1;
             this.txtZkzh.Name = "txtZkzh";
             this.txtZkzh.Properties.ReadOnly = true;
-            this.txtZkzh.Size = new System.Drawing.Size(459, 44);
+            this.txtZkzh.Size = new System.Drawing.Size(226, 20);
             this.txtZkzh.StyleController = this.layoutControl1;
             this.txtZkzh.TabIndex = 10;
             // 
             // txtSfzh
             // 
-            this.txtSfzh.Location = new System.Drawing.Point(134, 1036);
-            this.txtSfzh.Margin = new System.Windows.Forms.Padding(6);
+            this.txtSfzh.Location = new System.Drawing.Point(81, 478);
             this.txtSfzh.MenuManager = this.barManager1;
             this.txtSfzh.Name = "txtSfzh";
             this.txtSfzh.Properties.ReadOnly = true;
-            this.txtSfzh.Size = new System.Drawing.Size(420, 44);
+            this.txtSfzh.Size = new System.Drawing.Size(207, 20);
             this.txtSfzh.StyleController = this.layoutControl1;
             this.txtSfzh.TabIndex = 9;
             // 
             // txtZb
             // 
-            this.txtZb.Location = new System.Drawing.Point(686, 988);
-            this.txtZb.Margin = new System.Windows.Forms.Padding(6);
+            this.txtZb.Location = new System.Drawing.Point(359, 454);
             this.txtZb.MenuManager = this.barManager1;
             this.txtZb.Name = "txtZb";
             this.txtZb.Properties.ReadOnly = true;
-            this.txtZb.Size = new System.Drawing.Size(459, 44);
+            this.txtZb.Size = new System.Drawing.Size(226, 20);
             this.txtZb.StyleController = this.layoutControl1;
             this.txtZb.TabIndex = 8;
             // 
             // txtCsrq
             // 
-            this.txtCsrq.Location = new System.Drawing.Point(134, 988);
-            this.txtCsrq.Margin = new System.Windows.Forms.Padding(6);
+            this.txtCsrq.Location = new System.Drawing.Point(81, 454);
             this.txtCsrq.MenuManager = this.barManager1;
             this.txtCsrq.Name = "txtCsrq";
             this.txtCsrq.Properties.ReadOnly = true;
-            this.txtCsrq.Size = new System.Drawing.Size(420, 44);
+            this.txtCsrq.Size = new System.Drawing.Size(207, 20);
             this.txtCsrq.StyleController = this.layoutControl1;
             this.txtCsrq.TabIndex = 7;
             // 
             // txtXb
             // 
-            this.txtXb.Location = new System.Drawing.Point(686, 940);
-            this.txtXb.Margin = new System.Windows.Forms.Padding(6);
+            this.txtXb.Location = new System.Drawing.Point(359, 430);
             this.txtXb.MenuManager = this.barManager1;
             this.txtXb.Name = "txtXb";
             this.txtXb.Properties.ReadOnly = true;
-            this.txtXb.Size = new System.Drawing.Size(459, 44);
+            this.txtXb.Size = new System.Drawing.Size(226, 20);
             this.txtXb.StyleController = this.layoutControl1;
             this.txtXb.TabIndex = 6;
             // 
             // txtXm
             // 
-            this.txtXm.Location = new System.Drawing.Point(134, 940);
-            this.txtXm.Margin = new System.Windows.Forms.Padding(6);
+            this.txtXm.Location = new System.Drawing.Point(81, 430);
             this.txtXm.Name = "txtXm";
             this.txtXm.Properties.ReadOnly = true;
-            this.txtXm.Size = new System.Drawing.Size(420, 44);
+            this.txtXm.Size = new System.Drawing.Size(207, 20);
             this.txtXm.StyleController = this.layoutControl1;
             this.txtXm.TabIndex = 5;
             // 
@@ -1091,7 +1012,7 @@
             this.layoutControlItem16});
             this.Root.Name = "Root";
             this.Root.OptionsItemText.TextToControlDistance = 4;
-            this.Root.Size = new System.Drawing.Size(2178, 1259);
+            this.Root.Size = new System.Drawing.Size(1173, 604);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -1109,9 +1030,9 @@
             this.layoutControlItem1,
             this.layoutControlItem17,
             this.layoutControlItem18});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 873);
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 385);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1150, 366);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(589, 199);
             this.layoutControlGroup1.Text = "摘要信息";
             // 
             // layoutControlItem2
@@ -1119,127 +1040,127 @@
             this.layoutControlItem2.Control = this.txtXm;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(533, 48);
+            this.layoutControlItem2.Size = new System.Drawing.Size(268, 24);
             this.layoutControlItem2.Text = "姓      名";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(105, 29);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(53, 14);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.txtXb;
-            this.layoutControlItem3.Location = new System.Drawing.Point(552, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(278, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(572, 48);
+            this.layoutControlItem3.Size = new System.Drawing.Size(287, 24);
             this.layoutControlItem3.Text = "性      别";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(105, 29);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(53, 14);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.txtCsrq;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(533, 48);
+            this.layoutControlItem4.Size = new System.Drawing.Size(268, 24);
             this.layoutControlItem4.Text = "出生日期";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(105, 29);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(53, 14);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.txtZb;
-            this.layoutControlItem5.Location = new System.Drawing.Point(552, 48);
+            this.layoutControlItem5.Location = new System.Drawing.Point(278, 24);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(572, 48);
+            this.layoutControlItem5.Size = new System.Drawing.Size(287, 24);
             this.layoutControlItem5.Text = "族      别";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(105, 29);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(53, 14);
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.txtSfzh;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 96);
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(533, 48);
+            this.layoutControlItem6.Size = new System.Drawing.Size(268, 24);
             this.layoutControlItem6.Text = "身份证号";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(105, 29);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(53, 14);
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.txtZkzh;
-            this.layoutControlItem7.Location = new System.Drawing.Point(552, 96);
+            this.layoutControlItem7.Location = new System.Drawing.Point(278, 48);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(572, 48);
+            this.layoutControlItem7.Size = new System.Drawing.Size(287, 24);
             this.layoutControlItem7.Text = "准考证号";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(105, 29);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(53, 14);
             // 
             // emptySpaceItem6
             // 
             this.emptySpaceItem6.AllowHotTrack = false;
-            this.emptySpaceItem6.Location = new System.Drawing.Point(0, 192);
+            this.emptySpaceItem6.Location = new System.Drawing.Point(0, 96);
             this.emptySpaceItem6.Name = "emptySpaceItem6";
-            this.emptySpaceItem6.Size = new System.Drawing.Size(1124, 10);
+            this.emptySpaceItem6.Size = new System.Drawing.Size(565, 10);
             this.emptySpaceItem6.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(533, 0);
-            this.emptySpaceItem2.MaxSize = new System.Drawing.Size(19, 0);
-            this.emptySpaceItem2.MinSize = new System.Drawing.Size(19, 50);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(268, 0);
+            this.emptySpaceItem2.MaxSize = new System.Drawing.Size(10, 0);
+            this.emptySpaceItem2.MinSize = new System.Drawing.Size(10, 24);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(19, 192);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(10, 96);
             this.emptySpaceItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem15
             // 
             this.layoutControlItem15.Control = this.linkInformation1;
-            this.layoutControlItem15.Location = new System.Drawing.Point(0, 202);
+            this.layoutControlItem15.Location = new System.Drawing.Point(0, 106);
             this.layoutControlItem15.Name = "layoutControlItem15";
-            this.layoutControlItem15.Size = new System.Drawing.Size(1124, 48);
+            this.layoutControlItem15.Size = new System.Drawing.Size(565, 24);
             this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem15.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.linkInformation2;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 250);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 130);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1124, 48);
+            this.layoutControlItem1.Size = new System.Drawing.Size(565, 24);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem17
             // 
             this.layoutControlItem17.Control = this.txtSfwk;
-            this.layoutControlItem17.Location = new System.Drawing.Point(0, 144);
+            this.layoutControlItem17.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Size = new System.Drawing.Size(533, 48);
+            this.layoutControlItem17.Size = new System.Drawing.Size(268, 24);
             this.layoutControlItem17.Text = "文科/理科";
-            this.layoutControlItem17.TextSize = new System.Drawing.Size(105, 29);
+            this.layoutControlItem17.TextSize = new System.Drawing.Size(53, 14);
             // 
             // layoutControlItem18
             // 
             this.layoutControlItem18.Control = this.txtBdsj;
-            this.layoutControlItem18.Location = new System.Drawing.Point(552, 144);
+            this.layoutControlItem18.Location = new System.Drawing.Point(278, 72);
             this.layoutControlItem18.Name = "layoutControlItem18";
-            this.layoutControlItem18.Size = new System.Drawing.Size(572, 48);
+            this.layoutControlItem18.Size = new System.Drawing.Size(287, 24);
             this.layoutControlItem18.Text = "报到时间";
-            this.layoutControlItem18.TextSize = new System.Drawing.Size(105, 29);
+            this.layoutControlItem18.TextSize = new System.Drawing.Size(53, 14);
             // 
             // layoutControlGroup2
             // 
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem14});
-            this.layoutControlGroup2.Location = new System.Drawing.Point(1761, 873);
+            this.layoutControlGroup2.Location = new System.Drawing.Point(929, 385);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(397, 366);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(224, 199);
             this.layoutControlGroup2.Text = "摄像头预览";
             // 
             // layoutControlItem14
             // 
             this.layoutControlItem14.Control = this.imageBox1;
             this.layoutControlItem14.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem14.MaxSize = new System.Drawing.Size(371, 298);
-            this.layoutControlItem14.MinSize = new System.Drawing.Size(371, 298);
+            this.layoutControlItem14.MaxSize = new System.Drawing.Size(200, 144);
+            this.layoutControlItem14.MinSize = new System.Drawing.Size(200, 144);
             this.layoutControlItem14.Name = "layoutControlItem14";
-            this.layoutControlItem14.Size = new System.Drawing.Size(371, 298);
+            this.layoutControlItem14.Size = new System.Drawing.Size(200, 154);
             this.layoutControlItem14.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem14.TextVisible = false;
@@ -1255,19 +1176,19 @@
             this.layoutControlItem13,
             this.emptySpaceItem4,
             this.emptySpaceItem5});
-            this.layoutControlGroup3.Location = new System.Drawing.Point(1150, 873);
+            this.layoutControlGroup3.Location = new System.Drawing.Point(589, 385);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(611, 366);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(340, 199);
             this.layoutControlGroup3.Text = "照片";
             // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.pictureEdit1;
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem8.MaxSize = new System.Drawing.Size(189, 261);
-            this.layoutControlItem8.MinSize = new System.Drawing.Size(189, 261);
+            this.layoutControlItem8.MaxSize = new System.Drawing.Size(102, 126);
+            this.layoutControlItem8.MinSize = new System.Drawing.Size(102, 126);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(189, 261);
+            this.layoutControlItem8.Size = new System.Drawing.Size(102, 126);
             this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
@@ -1275,20 +1196,20 @@
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.labelControl1;
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 261);
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 126);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(189, 37);
+            this.layoutControlItem9.Size = new System.Drawing.Size(102, 28);
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
             // layoutControlItem10
             // 
             this.layoutControlItem10.Control = this.pictureEdit2;
-            this.layoutControlItem10.Location = new System.Drawing.Point(198, 0);
-            this.layoutControlItem10.MaxSize = new System.Drawing.Size(189, 261);
-            this.layoutControlItem10.MinSize = new System.Drawing.Size(189, 261);
+            this.layoutControlItem10.Location = new System.Drawing.Point(107, 0);
+            this.layoutControlItem10.MaxSize = new System.Drawing.Size(102, 126);
+            this.layoutControlItem10.MinSize = new System.Drawing.Size(102, 126);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(189, 261);
+            this.layoutControlItem10.Size = new System.Drawing.Size(102, 126);
             this.layoutControlItem10.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
@@ -1296,20 +1217,20 @@
             // layoutControlItem11
             // 
             this.layoutControlItem11.Control = this.labelControl2;
-            this.layoutControlItem11.Location = new System.Drawing.Point(198, 261);
+            this.layoutControlItem11.Location = new System.Drawing.Point(107, 126);
             this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(189, 37);
+            this.layoutControlItem11.Size = new System.Drawing.Size(102, 28);
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem11.TextVisible = false;
             // 
             // layoutControlItem12
             // 
             this.layoutControlItem12.Control = this.pictureEdit3;
-            this.layoutControlItem12.Location = new System.Drawing.Point(396, 0);
-            this.layoutControlItem12.MaxSize = new System.Drawing.Size(189, 261);
-            this.layoutControlItem12.MinSize = new System.Drawing.Size(189, 261);
+            this.layoutControlItem12.Location = new System.Drawing.Point(214, 0);
+            this.layoutControlItem12.MaxSize = new System.Drawing.Size(102, 126);
+            this.layoutControlItem12.MinSize = new System.Drawing.Size(102, 126);
             this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(189, 261);
+            this.layoutControlItem12.Size = new System.Drawing.Size(102, 126);
             this.layoutControlItem12.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem12.TextVisible = false;
@@ -1317,42 +1238,42 @@
             // layoutControlItem13
             // 
             this.layoutControlItem13.Control = this.labelControl3;
-            this.layoutControlItem13.Location = new System.Drawing.Point(396, 261);
+            this.layoutControlItem13.Location = new System.Drawing.Point(214, 126);
             this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(189, 37);
+            this.layoutControlItem13.Size = new System.Drawing.Size(102, 28);
             this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem13.TextVisible = false;
             // 
             // emptySpaceItem4
             // 
             this.emptySpaceItem4.AllowHotTrack = false;
-            this.emptySpaceItem4.Location = new System.Drawing.Point(189, 0);
-            this.emptySpaceItem4.MaxSize = new System.Drawing.Size(9, 170);
-            this.emptySpaceItem4.MinSize = new System.Drawing.Size(9, 170);
+            this.emptySpaceItem4.Location = new System.Drawing.Point(102, 0);
+            this.emptySpaceItem4.MaxSize = new System.Drawing.Size(5, 82);
+            this.emptySpaceItem4.MinSize = new System.Drawing.Size(5, 82);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(9, 298);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(5, 154);
             this.emptySpaceItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem5
             // 
             this.emptySpaceItem5.AllowHotTrack = false;
-            this.emptySpaceItem5.Location = new System.Drawing.Point(387, 0);
-            this.emptySpaceItem5.MaxSize = new System.Drawing.Size(9, 170);
-            this.emptySpaceItem5.MinSize = new System.Drawing.Size(9, 170);
+            this.emptySpaceItem5.Location = new System.Drawing.Point(209, 0);
+            this.emptySpaceItem5.MaxSize = new System.Drawing.Size(5, 82);
+            this.emptySpaceItem5.MinSize = new System.Drawing.Size(5, 82);
             this.emptySpaceItem5.Name = "emptySpaceItem5";
-            this.emptySpaceItem5.Size = new System.Drawing.Size(9, 298);
+            this.emptySpaceItem5.Size = new System.Drawing.Size(5, 154);
             this.emptySpaceItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 836);
-            this.emptySpaceItem1.MaxSize = new System.Drawing.Size(1352, 37);
-            this.emptySpaceItem1.MinSize = new System.Drawing.Size(1352, 37);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 367);
+            this.emptySpaceItem1.MaxSize = new System.Drawing.Size(728, 18);
+            this.emptySpaceItem1.MinSize = new System.Drawing.Size(728, 18);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(2158, 37);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(1153, 18);
             this.emptySpaceItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -1361,7 +1282,7 @@
             this.layoutControlItem16.Control = this.gridControl1;
             this.layoutControlItem16.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem16.Name = "layoutControlItem16";
-            this.layoutControlItem16.Size = new System.Drawing.Size(2158, 836);
+            this.layoutControlItem16.Size = new System.Drawing.Size(1153, 367);
             this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem16.TextVisible = false;
             // 
@@ -1376,27 +1297,24 @@
             this.emptySpaceItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // bdsj
+            // barCheckItem1
             // 
-            this.bdsj.Caption = "报到时间";
-            this.bdsj.MinWidth = 40;
-            this.bdsj.Name = "bdsj";
-            this.bdsj.Visible = true;
-            this.bdsj.VisibleIndex = 42;
-            this.bdsj.Width = 150;
+            this.barCheckItem1.Caption = "barCheckItem1";
+            this.barCheckItem1.Id = 8;
+            this.barCheckItem1.Name = "barCheckItem1";
             // 
             // NewStudentEnrollControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "NewStudentEnrollControl";
-            this.Size = new System.Drawing.Size(2178, 1301);
+            this.Size = new System.Drawing.Size(1173, 628);
             this.Load += new System.EventHandler(this.NewStudentEnrollControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
@@ -1559,5 +1477,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
         private DevExpress.XtraBars.BarButtonItem btnStatics;
         private DevExpress.XtraGrid.Columns.GridColumn bdsj;
+        private DevExpress.XtraBars.BarCheckItem barCheckItem1;
     }
 }

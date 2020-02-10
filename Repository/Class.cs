@@ -1,89 +1,106 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
-using System.Data.SQLite;
-using Dapper;
+using Repository.Model;
+using System.Data.Entity;
+using System.Linq.Expressions;
 
 namespace Repository
 {
     public class Class
     {
-        protected static readonly IDbConnection db = new SQLiteConnection("Data Source=db.db; Integrated Security=True");
+        private readonly MyDbContext dbContext = new MyDbContext();
 
-        public List<Entity.Class> GetList(string where)
+        public Class()
         {
-            string sql = "select * from [class]";
-
-            if (where.Trim() != string.Empty)
-            {
-                sql += " where " + where;
-            }
-
-            List<Entity.Class> classes = db.Query<Entity.Class>(sql).ToList<Entity.Class>();
-
-            return classes;
         }
 
-        public int Add(Entity.Class c)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="orderExp"></param>
+        /// <param name="predicate"></param>
+        /// <param name="orderBy"></param>
+        /// <returns></returns>
+        public List<Model.Class> GetList(Expression<Func<Model.Class, dynamic>> orderExp = null, Expression<Func<Model.Class, bool>> predicate = null, string orderBy = "asc")
         {
-            string sql = "insert into [class](bjmc, bzrxm, bjlb) values('" + c.bjmc + "','" + c.bzrxm + "','" + c.bjlb + "')";
-
-            int ret = db.Execute(sql);
-
-            return ret;
-        }
-
-        public int Delete(int id)
-        {
-            string sql1 = "delete from [class] where ID=" + id.ToString();
-            string sql2 = "delete from [classassignment] where bjbh=" + id.ToString();
-
-            if(db.State == ConnectionState.Closed)
-            {
-                db.Open();
-            }
-            IDbTransaction trans = db.BeginTransaction();
             try
             {
-                int ret = db.Execute(sql1, trans);
-                db.Execute(sql2, trans);
-                trans.Commit();
+                IQueryable<Model.Class> quary = this.dbContext.Set<Model.Class>().AsNoTracking();
 
-                return ret;
+                quary = quary.Include(x => x.ClassType);
+                quary = quary.Include(x => x.HeadTeacher);
+
+                if (predicate != null)
+                {
+                    quary = quary.Where(predicate);
+                }
+
+                if (orderExp != null)
+                {
+                    quary = orderBy == "desc" ? quary.OrderByDescending(orderExp) : quary.OrderBy(orderExp);
+                }
+
+                return quary.ToList();
+
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                trans.Rollback();
+                // write log file
 
-                return 0;
+                return null;
             }
-
         }
 
-        public int Update(Entity.Class c)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cls"></param>
+        public void Add(Model.Class cls)
         {
-            string sql = "update [class] set bjmc='" + c.bjmc + "', bzrxm='" + c.bzrxm + "', bjlb='" + c.bjlb + "' where ID=" + c.ID;
-
-            int ret = db.Execute(sql);
-
-            return ret;
+            try
+            {
+                this.dbContext.Set<Model.Class>().Add(cls);
+                this.dbContext.SaveChanges();
+            }
+            catch
+            {
+                throw;
+            }
         }
 
-        public void Clear()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cls"></param>
+        public void Update(Model.Class cls)
         {
-            if (db.State == ConnectionState.Closed)
+            try
             {
-                db.Open();
+                //this.dbContext.Set<Model.Class>().Update(cls);
+                this.dbContext.SaveChanges();
             }
-            using (var transaction = db.BeginTransaction())
+            catch
             {
-                db.Execute("delete from [Class];", transaction);
-                db.Execute("update sqlite_sequence set seq=0 where name='Class';", transaction);
-                db.Execute("delete from [classassignment]");
-                transaction.Commit();
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cls"></param>
+        public void Delete(Model.Class cls)
+        {
+            try
+            {
+                this.dbContext.Set<Model.Class>().Remove(cls);
+                this.dbContext.SaveChanges();
+            }
+            catch
+            {
+                throw;
             }
         }
     }

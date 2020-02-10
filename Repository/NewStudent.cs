@@ -1,110 +1,220 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
-using System.Data.SQLite;
-using Dapper;
+using Repository.Model;
+using System.Data.Entity;
+using System.Linq.Expressions;
 
 namespace Repository
 {
     public class NewStudent
     {
-        protected static readonly IDbConnection db = new SQLiteConnection("Data Source=db.db; Integrated Security=True");
+        private readonly MyDbContext dbContext = new MyDbContext();
 
-        public List<Entity.NewStudent> GetList(string where)
+        public NewStudent()
         {
-            string sql = "select * from [NewStudent]";
-
-            if (where.Trim() != string.Empty)
-            {
-                sql += " where " + where;
-            }
-
-            List<Entity.NewStudent> students = db.Query<Entity.NewStudent>(sql).ToList<Entity.NewStudent>();
-
-            return students;
+            //Batteries.Init();
         }
 
-        public int Add(Entity.NewStudent s)
+        /// <summary>
+        /// 获取数据列表
+        /// </summary>
+        /// <param name="orderExp">排序条件</param>
+        /// <param name="expression">查询条件</param>
+        /// <param name="orderBy">排序方式</param>
+        /// <param name="includes">关联表</param>
+        /// <returns></returns>
+        public List<Model.NewStudent> GetList(Expression<Func<Model.NewStudent, dynamic>> orderExp = null, Expression<Func<Model.NewStudent, bool>> predicate = null, string orderBy = "asc" , string[] includes = null)
+        {          
+            try
+            {
+                IQueryable<Model.NewStudent> quary = this.dbContext.Set<Model.NewStudent>().AsNoTracking();
+
+                
+                if (includes != null && includes.Any())
+                {
+                    foreach (var include in includes)
+                    {
+                        quary = quary.Include(include);
+                    }
+                }
+                
+                
+
+                if (predicate != null)
+                {
+                    quary = quary.Where(predicate);
+                }
+
+                if (orderExp != null)
+                {
+                    quary = orderBy == "desc" ? quary.OrderByDescending(orderExp) : quary.OrderBy(orderExp);
+                }
+
+                return quary.ToList();
+
+
+            }
+            catch (Exception ex)
+            {
+                // write log file
+
+                //return null;
+                throw (ex);
+            }                        
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newStudent"></param>
+        public void Add(Model.NewStudent newStudent)
         {
-            string sql = "insert into [NewStudent](zkzh,xm,bmdz,bmxs,bmxx,bmhkdz,sjsydz,ywcj,wlhxcj,sxcj,ddyfzlscj,wycj,zcj,tycj,sfzh,xjh,sy,zb,xb,csrq,bj,kstz,zzmm,hkxz,txdz,lxdh,yzbm,fqxm,fqsfzh,fqzb,fqhkxz,fqlxdh,fqgzdw,mqxm,mqsfzh,mqzb,mqhkxz,mqlxdh,mqgzdw,lqss,lqxx,sfwk,sfbd) ";
-            sql += "values (@zkzh,@xm,@bmdz,@bmxs,@bmxx,@bmhkdz,@sjsydz,@ywcj,@wlhxcj,@sxcj,@ddyfzlscj,@wycj,@zcj,@tycj,@sfzh,@xjh,@sy,@zb,@xb,@csrq,@bj,@kstz,@zzmm,@hkxz,@txdz,@lxdh,@yzbm,@fqxm,@fqsfzh,@fqzb,@fqhkxz,@fqlxdh,@fqgzdw,@mqxm,@mqsfzh,@mqzb,@mqhkxz,@mqlxdh,@mqgzdw,@lqss,@lqxx,@sfwk,@sfbd)";
+            try
+            {
+                this.dbContext.Set<Model.NewStudent>().Add(newStudent);
+                this.dbContext.SaveChanges();
+            }
+            catch
+            {
+                throw;
+            }
+        }
 
-            int ret = db.Execute(sql, s);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newStudent"></param>
+        public void Update(Model.NewStudent newStudent)
+        {
+            try
+            {
+                //this.dbContext.Set<Model.NewStudent>().Update(newStudent);
+                this.dbContext.SaveChanges();
+            }
+            catch
+            {
+                throw;
+            }
+        }
 
-            return ret;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newStudent"></param>
+        public void Delete(Model.NewStudent newStudent)
+        {
+            //1. 删除student
+            //2. 删除报到信息
+            try
+            {
+                this.dbContext.Set<Model.NewStudent>().Remove(newStudent);
+                this.dbContext.SaveChanges();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newStudent"></param>
+        /// <param name="enrollment"></param>
+        public void SetAsEnroll(Model.NewStudent newStudent, Model.Enrollment enrollment)
+        {
+            enrollment.NewStudentId = newStudent.NewStudentId;
+            try
+            {
+                this.dbContext.Set<Model.Enrollment>().Add(enrollment);
+                this.dbContext.SaveChanges();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newStudent"></param>
+        public void SetAsNotEnroll(Model.NewStudent newStudent)
+        {
+            try
+            {
+                Model.Enrollment enrollment = this.dbContext.Set<Model.Enrollment>().Single(x => x.EnrollmentId == newStudent.NewStudentId);
+
+                if (enrollment != null)
+                {
+                    this.dbContext.Set<Model.Enrollment>().Remove(enrollment);
+                    this.dbContext.SaveChanges();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newStudent"></param>
+        public void SetAsLiberalArts(Model.NewStudent newStudent)
+        {
+            try
+            {
+                newStudent.sfwk = 1;
+                this.dbContext.SaveChanges();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newStudent"></param>
+        public void SetAsScience(Model.NewStudent newStudent)
+        {
+            try
+            {
+                newStudent.sfwk = 0;
+                this.dbContext.SaveChanges();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public bool IsEnroll(Model.NewStudent newStudent)
+        {
+            return newStudent.Enrollment != null;
         }
 
         public void Clear()
         {
-            if(db.State == ConnectionState.Closed)
+            using (var transaction = this.dbContext.Database.BeginTransaction())
             {
-                db.Open();
-            }
-            using (var transaction = db.BeginTransaction())
-            {
-                db.Execute("delete from [NewStudent];", transaction);
-                db.Execute("update sqlite_sequence set seq=0 where name='NewStudent';", transaction);
-                db.Execute("delete from [StudentClass]");
-                transaction.Commit();
-            }
-        }
+                try
+                {
+                    this.dbContext.Set<Model.NewStudent>().SqlQuery("delete from [NewStudent];");
+                    this.dbContext.Set<Model.NewStudent>().SqlQuery("update sqlite_sequence set seq=0 where name='NewStudent';");
+                    this.dbContext.Set<Model.NewStudent>().SqlQuery("delete from [ClassAssignment];");
 
-        public int SetLiberalArts(int id, bool flag)
-        {
-            // flag
-            // true：文科
-            // false：理科
-            string sql = "update [NewStudent] set sfwk=" + flag + " where ID=" + id.ToString();
-            int ret = db.Execute(sql);
-
-            return ret;
-        }
-
-
-        public void SetEnrollment(int id, string time)
-        {
-            // flag
-            // true：已报到
-            // false：未报到
-            string sql1 = "update [newstudent] set sfbd=1 where ID=" + id.ToString();
-            string sql2 = "insert into [Enrollment] set EnrollmentTime='" + time + "',NewStudentId=" + id.ToString();
-
-
-            if (db.State == ConnectionState.Closed)
-            {
-                db.Open();
-            }
-            using (var transaction = db.BeginTransaction())
-            {
-                db.Execute(sql1, transaction);
-                db.Execute(sql2, transaction);
-                transaction.Commit();
+                    transaction.Commit();
+                }
+                catch(Exception ex)
+                {
+                    transaction.Rollback();
+                    throw (ex);
+                }
             }
         }
-
-        public void DeSetEnrollment(int id)
-        {
-            // flag
-            // true：已报到
-            // false：未报到
-            string sql1 = "update [newstudent] set sfbd=0 where ID=" + id.ToString();
-            string sql2 = "delete from [Enrollment] where NewStudentId=" + id.ToString();
-
-
-            if (db.State == ConnectionState.Closed)
-            {
-                db.Open();
-            }
-            using (var transaction = db.BeginTransaction())
-            {
-                db.Execute(sql1, transaction);
-                db.Execute(sql2, transaction);
-                transaction.Commit();
-            }
-        }
-
     }
 }

@@ -8,7 +8,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using Repository;
 
 namespace MHSSystem.FormControls
 {
@@ -30,7 +29,7 @@ namespace MHSSystem.FormControls
             
 
             // 读取excel，插入数据库，然后再说别的
-            Repository.NewStudent repoNewStudent = new NewStudent();
+            Repository.NewStudent repoNewStudent = new Repository.NewStudent();
 
             // 清空原有记录
             repoNewStudent.Clear();
@@ -39,7 +38,7 @@ namespace MHSSystem.FormControls
             DataTable dt = Utils.ExcelHelper.ExcelToDataTableFormPath(this.txtFileName.EditValue.ToString(), true, 1); //学生数据须为第一张sheet
             foreach (DataRow dr in dt.Rows)
             {
-                Repository.Entity.NewStudent s = new Repository.Entity.NewStudent();
+                Repository.Model.NewStudent s = new Repository.Model.NewStudent();
                 s.zkzh = dr["准考证号"] == null ? "" : dr["准考证号"].ToString();
                 s.xm = dr["姓名"] == null ? "" : dr["姓名"].ToString();
                 s.bmdz = dr["报名地州"] == null ? "" : dr["报名地州"].ToString();
@@ -103,10 +102,18 @@ namespace MHSSystem.FormControls
         private void BindNewStudent()
         {
 
-            Repository.NewStudent repoNewStudent = new NewStudent();
-            List<Repository.Entity.NewStudent> students = repoNewStudent.GetList("");
+            Repository.NewStudent repoNewStudent = new Repository.NewStudent();
 
-            this.gridControl1.DataSource = students;
+            try
+            {
+                List<Repository.Model.NewStudent> students = repoNewStudent.GetList();
+                this.gridControl1.DataSource = students;
+            }
+            catch(Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message);
+            }
+            
             
             //this.lblTotalStudents.Text = students.Count.ToString();
         }

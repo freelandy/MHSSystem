@@ -45,25 +45,64 @@ namespace MHSSystem.Forms
             BaseForm.defaultLookAndFeel.LookAndFeel.SkinName = this.cbStyle.SelectedItem.ToString();
         }
 
+
+        private void CreareAndSelectTabPage(Control control, string caption, string tag)
+        {
+            DevExpress.XtraTab.XtraTabPage page = null;
+            bool flag = false;
+
+            // if this page alread exist, activate it
+            foreach (DevExpress.XtraTab.XtraTabPage p in this.xtraTabControl1.TabPages)
+            {
+                if (p.Tag.ToString() == tag)
+                {
+                    page = p;
+                    flag = true;
+                    break;
+                }
+            }
+
+            // else create a page
+            if (!flag)
+            {
+                page = new DevExpress.XtraTab.XtraTabPage();
+                page.Tag = tag;
+                page.Text = caption;
+                control.Dock = DockStyle.Fill;
+                page.Controls.Add(control);
+
+                this.xtraTabControl1.TabPages.Add(page);
+            }
+
+            // activate
+            this.xtraTabControl1.SelectedTabPage = page;
+        }
         private void btnNewStudentListMgr_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             FormControls.NewStudentListControl c = new FormControls.NewStudentListControl();
-            c.Dock = DockStyle.Fill;
-            this.xtraTabControl1.TabPages[0].Controls.Add(c);
+            this.CreareAndSelectTabPage(c, e.Link.Item.Caption, e.Link.Item.Name);
         }
 
         private void BtnNewStudentEnrollMgr_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             FormControls.NewStudentEnrollControl c = new FormControls.NewStudentEnrollControl();
-            c.Dock = DockStyle.Fill;
-            this.xtraTabControl1.TabPages[1].Controls.Add(c);
+            this.CreareAndSelectTabPage(c, e.Link.Item.Caption, e.Link.Item.Name);
         }
 
         private void btnNewStudentAssignClassMgr_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             FormControls.NewStudentAssignClassControl c = new FormControls.NewStudentAssignClassControl();
-            c.Dock = DockStyle.Fill;
-            this.xtraTabControl1.TabPages[2].Controls.Add(c);
+            this.CreareAndSelectTabPage(c, e.Link.Item.Caption, e.Link.Item.Name);
+        }
+
+        private void xtraTabControl1_CloseButtonClick(object sender, EventArgs e)
+        {
+            DevExpress.XtraTab.ViewInfo.ClosePageButtonEventArgs arg = e as DevExpress.XtraTab.ViewInfo.ClosePageButtonEventArgs;
+            DevExpress.XtraTab.XtraTabPage page = arg.Page as DevExpress.XtraTab.XtraTabPage;
+
+            page.Controls.Clear();
+            this.xtraTabControl1.TabPages.Remove(page);
+            page.Dispose();
         }
     }
 }
