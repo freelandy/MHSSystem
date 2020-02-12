@@ -50,6 +50,8 @@ namespace MHSSystem.Utils
                     dt.Rows.Add(dr);
                 }
 
+                package.Dispose();
+
             }
 
             return dt;

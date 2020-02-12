@@ -12,13 +12,12 @@ using Emgu;
 using Emgu.CV;
 using Emgu.CV.UI;
 using Emgu.CV.Util;
-using Repository;
 
 namespace MHSSystem.FormControls
 {
     public partial class NewStudentEnrollControl : DevExpress.XtraEditors.XtraUserControl
     {
-        private readonly Repository.NewStudent repoNewStudent = new NewStudent();
+        private readonly Repository.NewStudent repoNewStudent = new Repository.NewStudent();
 
         public NewStudentEnrollControl()
         {
@@ -31,14 +30,12 @@ namespace MHSSystem.FormControls
             this.layoutControl1.BestFit();
 
 
-            //this.BindNewStudent();
+            this.BindNewStudent();
         }
 
         private void BindNewStudent()
         {
-
-            Repository.NewStudent repoNewStudent = new NewStudent();
-            List<Repository.Model.NewStudent> students = repoNewStudent.GetList();
+            List<Model.NewStudent> students = this.repoNewStudent.GetList(includes: new string[] { "Enrollment", "StudentClasses"});
 
             this.gridControl1.DataSource = students;
 
@@ -55,25 +52,25 @@ namespace MHSSystem.FormControls
 
         private void btnSetEnrollment_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //// record top row index
-            //int topRowIdx = this.gridView1.TopRowIndex;
-            //int focusedRowHandle = this.gridView1.GetSelectedRows()[0];
+            // record top row index
+            int topRowIdx = this.gridView1.TopRowIndex;
+            int focusedRowHandle = this.gridView1.GetSelectedRows()[0];
 
-            //// get data 
-            //Repository.Model.NewStudent newStudent = (Repository.Model.NewStudent)this.gridView1.GetFocusedRow();
+            // get data 
+            Model.NewStudent newStudent = (Model.NewStudent)this.gridView1.GetFocusedRow();
 
-            //if (newStudent != null)
-            //{
-            //    this.repoNewStudent.SetAsEnroll(newStudent, DateTime.Now.ToString()); 
+            if (newStudent != null)
+            {
+                this.repoNewStudent.SetAsEnroll(newStudent, new Model.Enrollment() { NewStudentId=newStudent.NewStudentId, EnrollmentTime=DateTime.Now});
 
-            //    this.BindNewStudent();
-            //}
+                this.BindNewStudent();
+            }
 
-            //// locate the recorded row
-            //this.gridView1.TopRowIndex = topRowIdx;
+            // locate the recorded row
+            this.gridView1.TopRowIndex = topRowIdx;
 
-            //// select current row
-            //this.gridView1.SelectRow(focusedRowHandle);
+            // select current row
+            this.gridView1.SelectRow(focusedRowHandle);
         }
 
         private void btnDeSetEnrollment_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

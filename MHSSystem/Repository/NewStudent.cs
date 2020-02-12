@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Repository.Model;
-using System.Data.Entity;
+using MHSSystem.Model;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using System.Diagnostics;
+using Microsoft.EntityFrameworkCore.Storage;
 
-namespace Repository
+namespace MHSSystem.Repository
 {
     public class NewStudent
     {
-        private readonly MyDbContext dbContext = new MyDbContext();
+        // private readonly MyDbContext dbContext = new MyDbContext();
 
         public NewStudent()
         {
-            //Batteries.Init();
+
         }
 
         /// <summary>
@@ -26,12 +26,12 @@ namespace Repository
         /// <param name="includes">关联表</param>
         /// <returns></returns>
         public List<Model.NewStudent> GetList(Expression<Func<Model.NewStudent, dynamic>> orderExp = null, Expression<Func<Model.NewStudent, bool>> predicate = null, string orderBy = "asc" , string[] includes = null)
-        {          
-            try
+        {
+            using (MyDbContext dbContext = new MyDbContext())
             {
-                IQueryable<Model.NewStudent> quary = this.dbContext.Set<Model.NewStudent>().AsNoTracking();
+                IQueryable<Model.NewStudent> quary = dbContext.Set<Model.NewStudent>().AsNoTracking();
 
-                
+
                 if (includes != null && includes.Any())
                 {
                     foreach (var include in includes)
@@ -40,8 +40,7 @@ namespace Repository
                     }
                 }
 
-                // output debug information
-                this.dbContext.Database.Log = new Action<string>(q => Debug.WriteLine(q));
+
 
                 if (predicate != null)
                 {
@@ -56,14 +55,7 @@ namespace Repository
                 return quary.ToList();
 
 
-            }
-            catch (Exception ex)
-            {
-                // write log file
-
-                //return null;
-                throw (ex);
-            }                        
+            }                      
         }
 
         /// <summary>
@@ -72,15 +64,12 @@ namespace Repository
         /// <param name="newStudent"></param>
         public void Add(Model.NewStudent newStudent)
         {
-            try
+            using (MyDbContext dbContext = new MyDbContext())
             {
-                this.dbContext.Set<Model.NewStudent>().Add(newStudent);
-                this.dbContext.SaveChanges();
+                dbContext.Set<Model.NewStudent>().Add(newStudent);
+                int flag = dbContext.SaveChanges();
             }
-            catch(Exception ex)
-            {
-                throw(ex);
-            }
+
         }
 
         /// <summary>
@@ -89,14 +78,10 @@ namespace Repository
         /// <param name="newStudent"></param>
         public void Update(Model.NewStudent newStudent)
         {
-            try
+            using (MyDbContext dbContext = new MyDbContext())
             {
-                //this.dbContext.Set<Model.NewStudent>().Update(newStudent);
-                this.dbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
+                dbContext.Set<Model.NewStudent>().Update(newStudent);
+                dbContext.SaveChanges();
             }
         }
 
@@ -108,14 +93,10 @@ namespace Repository
         {
             //1. 删除student
             //2. 删除报到信息
-            try
+            using (MyDbContext dbContext = new MyDbContext())
             {
-                this.dbContext.Set<Model.NewStudent>().Remove(newStudent);
-                this.dbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
+                dbContext.Set<Model.NewStudent>().Remove(newStudent);
+                dbContext.SaveChanges();
             }
         }
 
@@ -127,14 +108,27 @@ namespace Repository
         public void SetAsEnroll(Model.NewStudent newStudent, Model.Enrollment enrollment)
         {
             enrollment.NewStudentId = newStudent.NewStudentId;
-            try
+            enrollment.EnrollmentTime = DateTime.Now;
+            newStudent.sfbd = 1;
+
+            using (MyDbContext dbContext = new MyDbContext())
             {
-                this.dbContext.Set<Model.Enrollment>().Add(enrollment);
-                this.dbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
+                using (IDbContextTransaction trans = dbContext.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        dbContext.Set<Model.Enrollment>().Add(enrollment);
+                        dbContext.Set<Model.NewStudent>().Update(newStudent);
+                        dbContext.SaveChanges();
+
+                        trans.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        trans.Rollback();
+                        throw (ex);
+                    }
+                }
             }
         }
 
@@ -144,19 +138,15 @@ namespace Repository
         /// <param name="newStudent"></param>
         public void SetAsNotEnroll(Model.NewStudent newStudent)
         {
-            try
+            using (MyDbContext dbContext = new MyDbContext())
             {
-                Model.Enrollment enrollment = this.dbContext.Set<Model.Enrollment>().Single(x => x.EnrollmentId == newStudent.NewStudentId);
+                Model.Enrollment enrollment = dbContext.Set<Model.Enrollment>().Single(x => x.EnrollmentId == newStudent.NewStudentId);
 
                 if (enrollment != null)
                 {
-                    this.dbContext.Set<Model.Enrollment>().Remove(enrollment);
-                    this.dbContext.SaveChanges();
+                    dbContext.Set<Model.Enrollment>().Remove(enrollment);
+                    dbContext.SaveChanges();
                 }
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
             }
         }
 
@@ -166,14 +156,10 @@ namespace Repository
         /// <param name="newStudent"></param>
         public void SetAsLiberalArts(Model.NewStudent newStudent)
         {
-            try
+            using (MyDbContext dbContext = new MyDbContext())
             {
                 newStudent.sfwk = 1;
-                this.dbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
+                dbContext.SaveChanges();
             }
         }
 
@@ -183,40 +169,38 @@ namespace Repository
         /// <param name="newStudent"></param>
         public void SetAsScience(Model.NewStudent newStudent)
         {
-            try
+            using (MyDbContext dbContext = new MyDbContext())
             {
                 newStudent.sfwk = 0;
-                this.dbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
+                dbContext.SaveChanges();
             }
         }
 
         public bool IsEnroll(Model.NewStudent newStudent)
         {
-            //return newStudent.Enrollment != null;
-            return true;
+            return newStudent.Enrollment != null;
         }
 
         public void Clear()
         {
-            using (var transaction = this.dbContext.Database.BeginTransaction())
+            using (MyDbContext dbContext = new MyDbContext())
             {
-                try
+                using (IDbContextTransaction trans = dbContext.Database.BeginTransaction())
                 {
-                    this.dbContext.Database.ExecuteSqlCommand("delete from [NewStudent];");
-                    this.dbContext.Database.ExecuteSqlCommand("update sqlite_sequence set seq=0 where name='NewStudent';");
-                    this.dbContext.Database.ExecuteSqlCommand("delete from [Enrollment];");
-                    this.dbContext.Database.ExecuteSqlCommand("update sqlite_sequence set seq=0 where name='Enrollment';");
+                    try
+                    {
+                        dbContext.Database.ExecuteSqlRaw("delete from NewStudent");
+                        dbContext.Database.ExecuteSqlRaw("update sqlite_sequence set seq=0 where name='NewStudent'");
+                        dbContext.Database.ExecuteSqlRaw("delete from Enrollment");
+                        dbContext.Database.ExecuteSqlRaw("update sqlite_sequence set seq=0 where name='Enrollment'");
 
-                    transaction.Commit();
-                }
-                catch(Exception ex)
-                {
-                    transaction.Rollback();
-                    throw (ex);
+                        trans.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        trans.Rollback();
+                        throw (ex);
+                    }
                 }
             }
         }

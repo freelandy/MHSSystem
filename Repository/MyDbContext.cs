@@ -38,8 +38,18 @@ namespace Repository
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>(); //非常重要！否则会按照实体类名NewStudent去找NewStudents表
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>(); //非常重要！否则会按照实体类名NewStudent去找NewStudents表（在不进行配置的情况下）
+
+            modelBuilder.Entity<Model.NewStudent>().ToTable("NewStudent"); //设置实体类对应的表名
+            modelBuilder.Entity<Model.NewStudent>().Ignore(x => x.Enrollment); //设置Enrollment属性不映射到数据库中
+            modelBuilder.Entity<Model.NewStudent>().Ignore(x => x.Class);
+
+            // Map one-to-zero or one relationship
+            modelBuilder.Entity<Model.Enrollment>().HasRequired(x => x.NewStudent).WithOptional(x => x.Enrollment); // 一个NewStudent可以有一个或没有Enrollment
+            // Map one - to - many relationship
+            //modelBuilder.Entity<Model.NewStudent>().HasMany(x => x.Class).WithOptional(x => x.Enrollment); // 一个NewStudent可以有一个或没有Enrollment
+
         }
 
     }

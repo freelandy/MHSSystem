@@ -13,7 +13,7 @@ namespace MHSSystem.FormControls
 {
     public partial class NewStudentListControl : DevExpress.XtraEditors.XtraUserControl
     {
-        
+        public static readonly Repository.NewStudent repoNewStudent = new Repository.NewStudent();
         public NewStudentListControl()
         {
             InitializeComponent();
@@ -26,11 +26,6 @@ namespace MHSSystem.FormControls
                 return;
             }
 
-            
-
-            // 读取excel，插入数据库，然后再说别的
-            Repository.NewStudent repoNewStudent = new Repository.NewStudent();
-
             // 清空原有记录
             repoNewStudent.Clear();
 
@@ -38,7 +33,7 @@ namespace MHSSystem.FormControls
             DataTable dt = Utils.ExcelHelper.ExcelToDataTableFormPath(this.txtFileName.EditValue.ToString(), true, 1); //学生数据须为第一张sheet
             foreach (DataRow dr in dt.Rows)
             {
-                Repository.Model.NewStudent s = new Repository.Model.NewStudent();
+                Model.NewStudent s = new Model.NewStudent();
                 s.zkzh = dr["准考证号"] == null ? "" : dr["准考证号"].ToString();
                 s.xm = dr["姓名"] == null ? "" : dr["姓名"].ToString();
                 s.bmdz = dr["报名地州"] == null ? "" : dr["报名地州"].ToString();
@@ -101,12 +96,9 @@ namespace MHSSystem.FormControls
 
         private void BindNewStudent()
         {
-
-            Repository.NewStudent repoNewStudent = new Repository.NewStudent();
-
             try
             {
-                List<Repository.Model.NewStudent> students = repoNewStudent.GetList();
+                List<Model.NewStudent> students = repoNewStudent.GetList();
                 this.gridControl1.DataSource = students;
             }
             catch(Exception ex)

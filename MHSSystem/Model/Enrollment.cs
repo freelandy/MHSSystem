@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Repository.Model
+namespace MHSSystem.Model
 {
     [Table("Enrollment")]
     public class Enrollment
@@ -15,8 +15,9 @@ namespace Repository.Model
         [Column("ID")]
         public int EnrollmentId { set; get; }
 
+        
         public int NewStudentId { set; get; } 
-     
+
         public DateTime EnrollmentTime { set; get; }
 
         public string Memo1 { set; get; }

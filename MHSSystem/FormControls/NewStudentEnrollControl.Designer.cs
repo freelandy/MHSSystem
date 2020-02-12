@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             this.sfbd = new DevExpress.XtraGrid.Columns.GridColumn();
             this.zkzh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -43,10 +43,12 @@
             this.toggleReadIDCard = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.toggleFaceVerification = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btnStatics = new DevExpress.XtraBars.BarButtonItem();
+            this.barCheckItem2 = new DevExpress.XtraBars.BarCheckItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.txtBdsj = new DevExpress.XtraEditors.TextEdit();
             this.txtSfwk = new DevExpress.XtraEditors.TextEdit();
@@ -138,7 +140,6 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -223,8 +224,9 @@
             this.btnSetScience,
             this.btnEndEnrollment,
             this.btnStatics,
-            this.barCheckItem1});
-            this.barManager1.MaxItemId = 9;
+            this.barCheckItem1,
+            this.barCheckItem2});
+            this.barManager1.MaxItemId = 10;
             // 
             // bar1
             // 
@@ -240,7 +242,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSetScience),
             new DevExpress.XtraBars.LinkPersistInfo(this.toggleReadIDCard, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.toggleFaceVerification),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnStatics, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnStatics, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem2, true)});
             this.bar1.Text = "MainMenu";
             // 
             // btnSetEnrollment
@@ -301,10 +304,19 @@
             // 
             this.btnStatics.Caption = "统计";
             this.btnStatics.Id = 7;
-            this.btnStatics.ImageOptions.Image = global::MHSSystem.Properties.Resources.table_16x16;
-            this.btnStatics.ImageOptions.LargeImage = global::MHSSystem.Properties.Resources.table_32x32;
+            this.btnStatics.ImageOptions.Image = global::MHSSystem.Properties.Resources.chart_16x16;
+            this.btnStatics.ImageOptions.LargeImage = global::MHSSystem.Properties.Resources.chart_32x32;
             this.btnStatics.Name = "btnStatics";
             this.btnStatics.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // barCheckItem2
+            // 
+            this.barCheckItem2.Caption = "仅显示未报到学生";
+            this.barCheckItem2.Id = 9;
+            this.barCheckItem2.ImageOptions.Image = global::MHSSystem.Properties.Resources.show_16x16;
+            this.barCheckItem2.ImageOptions.LargeImage = global::MHSSystem.Properties.Resources.show_32x32;
+            this.barCheckItem2.Name = "barCheckItem2";
+            this.barCheckItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // barDockControlTop
             // 
@@ -341,6 +353,12 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 604);
+            // 
+            // barCheckItem1
+            // 
+            this.barCheckItem1.Caption = "barCheckItem1";
+            this.barCheckItem1.Id = 8;
+            this.barCheckItem1.Name = "barCheckItem1";
             // 
             // layoutControl1
             // 
@@ -475,16 +493,16 @@
             this.gridView1.FixedLineWidth = 1;
             this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.gridView1.FooterPanelHeight = 0;
-            gridFormatRule2.ApplyToRow = true;
-            gridFormatRule2.Column = this.sfbd;
-            gridFormatRule2.ColumnApplyTo = this.zkzh;
-            gridFormatRule2.Name = "Format0";
-            formatConditionRuleValue2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            formatConditionRuleValue2.Appearance.Options.UseBackColor = true;
-            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue2.Value1 = "0";
-            gridFormatRule2.Rule = formatConditionRuleValue2;
-            this.gridView1.FormatRules.Add(gridFormatRule2);
+            gridFormatRule1.ApplyToRow = true;
+            gridFormatRule1.Column = this.sfbd;
+            gridFormatRule1.ColumnApplyTo = this.zkzh;
+            gridFormatRule1.Name = "Format0";
+            formatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            formatConditionRuleValue1.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue1.Value1 = "0";
+            gridFormatRule1.Rule = formatConditionRuleValue1;
+            this.gridView1.FormatRules.Add(gridFormatRule1);
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.GroupRowHeight = 0;
             this.gridView1.IndicatorWidth = 50;
@@ -510,6 +528,7 @@
             // ID
             // 
             this.ID.Caption = "ID";
+            this.ID.FieldName = "NewSdudentId";
             this.ID.Name = "ID";
             // 
             // xm
@@ -1297,12 +1316,6 @@
             this.emptySpaceItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // barCheckItem1
-            // 
-            this.barCheckItem1.Caption = "barCheckItem1";
-            this.barCheckItem1.Id = 8;
-            this.barCheckItem1.Name = "barCheckItem1";
-            // 
             // NewStudentEnrollControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -1478,5 +1491,6 @@
         private DevExpress.XtraBars.BarButtonItem btnStatics;
         private DevExpress.XtraGrid.Columns.GridColumn bdsj;
         private DevExpress.XtraBars.BarCheckItem barCheckItem1;
+        private DevExpress.XtraBars.BarCheckItem barCheckItem2;
     }
 }
