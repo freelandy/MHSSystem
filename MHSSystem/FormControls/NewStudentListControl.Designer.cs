@@ -315,7 +315,7 @@
             // ID
             // 
             this.ID.Caption = "ID";
-            this.ID.FieldName = "NewStudentId";
+            this.ID.FieldName = "ID";
             this.ID.Name = "ID";
             // 
             // zkzh

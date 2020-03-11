@@ -13,7 +13,7 @@ namespace MHSSystem.FormControls
 {
     public partial class NewStudentListControl : DevExpress.XtraEditors.XtraUserControl
     {
-        public static readonly Repository.NewStudent repoNewStudent = new Repository.NewStudent();
+        public static readonly Repository.Student repoNewStudent = new Repository.Student();
         public NewStudentListControl()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace MHSSystem.FormControls
             DataTable dt = Utils.ExcelHelper.ExcelToDataTableFormPath(this.txtFileName.EditValue.ToString(), true, 1); //学生数据须为第一张sheet
             foreach (DataRow dr in dt.Rows)
             {
-                Model.NewStudent s = new Model.NewStudent();
+                Model.Student s = new Model.Student();
                 s.zkzh = dr["准考证号"] == null ? "" : dr["准考证号"].ToString();
                 s.xm = dr["姓名"] == null ? "" : dr["姓名"].ToString();
                 s.bmdz = dr["报名地州"] == null ? "" : dr["报名地州"].ToString();
@@ -91,14 +91,14 @@ namespace MHSSystem.FormControls
 
             XtraMessageBox.Show("导入完成。共导入" + cnt + "条记录。");
 
-            this.BindNewStudent();
+            this.BindStudent();
         }
 
-        private void BindNewStudent()
+        private void BindStudent()
         {
             try
             {
-                List<Model.NewStudent> students = repoNewStudent.GetList();
+                List<Model.Student> students = repoNewStudent.GetList();
                 this.gridControl1.DataSource = students;
             }
             catch(Exception ex)
@@ -126,7 +126,7 @@ namespace MHSSystem.FormControls
 
         private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            this.BindNewStudent();
+            this.BindStudent();
         }
 
         private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
@@ -139,7 +139,7 @@ namespace MHSSystem.FormControls
 
         private void NewStudentListControl_Load(object sender, EventArgs e)
         {
-            this.BindNewStudent();
+            this.BindStudent();
         }
     }
 }

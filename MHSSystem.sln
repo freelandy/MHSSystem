@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MHSSystem", "MHSSystem\MHSSystem.csproj", "{7473EC70-7327-4C6C-9A12-F3AE6E9283AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{6BB37475-B991-4854-922B-40A309FF44E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository.Dapper\Repository.csproj", "{B3A761A1-D779-42B2-A2F2-870979A682FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{7473EC70-7327-4C6C-9A12-F3AE6E9283AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7473EC70-7327-4C6C-9A12-F3AE6E9283AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7473EC70-7327-4C6C-9A12-F3AE6E9283AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BB37475-B991-4854-922B-40A309FF44E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BB37475-B991-4854-922B-40A309FF44E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BB37475-B991-4854-922B-40A309FF44E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BB37475-B991-4854-922B-40A309FF44E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3A761A1-D779-42B2-A2F2-870979A682FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3A761A1-D779-42B2-A2F2-870979A682FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3A761A1-D779-42B2-A2F2-870979A682FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3A761A1-D779-42B2-A2F2-870979A682FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
